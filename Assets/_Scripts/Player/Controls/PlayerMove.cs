@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
 
-namespace Game.Player.Controls
+namespace ProjectKYS.Player.Controls
 {
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMove : MonoBehaviour
     {
+        [SerializeField] private CharacterController _characterController;
+
         [Header("Speed")]
         [SerializeField] private float _walkSpeed = 1;
 
@@ -17,20 +20,17 @@ namespace Game.Player.Controls
 
         public enum MoveState { Stay, Walking }
 
-        private MoveState _state;
-        private float _currentSpeed;
-        private CharacterController _characterController;
         private Vector3 _velocity;
-        private float _verticalVelocity;
         private Vector3 _smoothV;
         private Vector2 _input;
+        private MoveState _state;
+        private float _currentSpeed;
+        private float _verticalVelocity;
 
         public Vector3 Velocity => _characterController.velocity;
 
-        public void Initialize(CharacterController characterController)
+        public void Initialize()
         {
-            _characterController = characterController;
-
             CanMoving = true;
         }
 

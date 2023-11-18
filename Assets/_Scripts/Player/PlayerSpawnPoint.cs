@@ -1,5 +1,4 @@
-﻿using ProjectKYS.Infrasturcture.Services;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 namespace ProjectKYS.Player

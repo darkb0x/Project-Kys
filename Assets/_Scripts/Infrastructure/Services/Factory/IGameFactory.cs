@@ -1,7 +1,7 @@
 ﻿using ProjectKYS.Infrasturcture.Services;
 using ProjectKYS.Player;
 
-namespace ProjectKYS.Infrasturcture.Factory
+namespace ProjectKYS.Infrasturcture.Services.Factory
 {
     public interface IGameFactory : IService
     {

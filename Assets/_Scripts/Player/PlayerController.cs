@@ -1,4 +1,4 @@
-﻿using Game.Player.Controls;
+﻿using ProjectKYS.Player.Controls;
 using ProjectKYS.Infrasturcture.Services;
 using System.Collections;
 using UnityEngine;
@@ -7,27 +7,27 @@ namespace ProjectKYS.Player
 {
     [RequireComponent(typeof(PlayerMove)),
     RequireComponent(typeof(PlayerLook)),
-    RequireComponent(typeof(CharacterController))]
+    RequireComponent(typeof(PlayerInteract))]
     public class PlayerController : MonoBehaviour, IService
     {
         [SerializeField] private Camera _camera;
 
         [Header("Components")]
-        [SerializeField] private CharacterController _characterController;
-        [Space]
         [SerializeField] private CursorLocker _cursorLocker;
         [Space]
         [SerializeField] private PlayerMove _playerMoveComponent;
         [SerializeField] private PlayerLook _playerLookComponent;
+        [SerializeField] private PlayerInteract _playerInteractComponent;
 
         public CursorLocker CursorLocker => _cursorLocker;
         public PlayerMove PlayerMove => _playerMoveComponent;
         public PlayerLook PlayerLook => _playerLookComponent;
+        public PlayerInteract PlayerInteract => _playerInteractComponent;
 
         public void Initialize()
         {
             _cursorLocker.Initialize();
-            _playerMoveComponent.Initialize(_characterController);
+            _playerMoveComponent.Initialize();
             _playerLookComponent.Initialize(_camera.transform);
         }
 
@@ -35,6 +35,7 @@ namespace ProjectKYS.Player
         {
             _playerMoveComponent.CanMoving = value;
             _playerLookComponent.CanLook = value;
+            _playerInteractComponent.enabled = value;
         }
 
         public Vector3 GetRotation()

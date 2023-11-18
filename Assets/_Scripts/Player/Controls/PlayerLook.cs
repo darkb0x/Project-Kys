@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Game.Player.Controls
+namespace ProjectKYS.Player.Controls
 {
     public class PlayerLook : MonoBehaviour
     {

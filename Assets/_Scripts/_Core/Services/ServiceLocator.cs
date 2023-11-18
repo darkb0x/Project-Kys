@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace ProjectKYS.Infrasturcture.Services
+namespace ProjectKYS
 {
     public class ServiceLocator
     {

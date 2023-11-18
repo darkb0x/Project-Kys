@@ -181,8 +181,9 @@ GameObject:
   - component: {fileID: 8655675571223991362}
   - component: {fileID: 178681648311748906}
   - component: {fileID: 3316470647551958781}
-  - component: {fileID: 5982700894178154512}
+  - component: {fileID: 5004166341506789431}
   - component: {fileID: 7475661570192095083}
+  - component: {fileID: 5982700894178154512}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -219,10 +220,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 6860663821766975402}
-  _characterController: {fileID: 5982700894178154512}
   _cursorLocker: {fileID: 7475661570192095083}
   _playerMoveComponent: {fileID: 178681648311748906}
   _playerLookComponent: {fileID: 3316470647551958781}
+  _playerInteractComponent: {fileID: 5004166341506789431}
 --- !u!114 &178681648311748906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc9894a977cb3f40ba74135ca05fda9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 5982700894178154512}
   _walkSpeed: 3
   _smoothMoveTime: 0.1
   _gravity: 18
@@ -258,6 +260,37 @@ MonoBehaviour:
   _maxY: 90
   Sensitive: 1.5
   CanLook: 1
+--- !u!114 &5004166341506789431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707961087966956376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d1ad966aafc874cb8fd3699b7a36bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 6860663821766975402}
+  _rayDistance: 2.5
+  _interactableLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &7475661570192095083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707961087966956376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6165072182626241887bf0f8d41c1af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lockAtStart: 1
+  _lockAtFocus: 1
 --- !u!143 &5982700894178154512
 CharacterController:
   m_ObjectHideFlags: 0
@@ -284,17 +317,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7475661570192095083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6707961087966956376}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6165072182626241887bf0f8d41c1af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _lockAtStart: 1
-  _lockAtFocus: 1

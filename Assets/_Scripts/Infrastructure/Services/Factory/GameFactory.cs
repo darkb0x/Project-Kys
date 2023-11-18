@@ -1,7 +1,7 @@
 ﻿using ProjectKYS.Player;
 using UnityEngine;
 
-namespace ProjectKYS.Infrasturcture.Factory
+namespace ProjectKYS.Infrasturcture.Services.Factory
 {
     public class GameFactory : IGameFactory
     {

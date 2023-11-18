@@ -1,5 +1,4 @@
-using ProjectKYS.Infrasturcture.Factory;
-using ProjectKYS.Infrasturcture.Services;
+using ProjectKYS.Infrasturcture.Services.Factory;
 using ProjectKYS.Player;
 using System.Collections;
 using System.Collections.Generic;
