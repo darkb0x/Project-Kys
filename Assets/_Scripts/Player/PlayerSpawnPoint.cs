@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using ProjectKYS.Infrasturcture.Services.Factory;
+using System.Collections;
 using UnityEngine;
 
 namespace ProjectKYS.Player
@@ -15,7 +16,7 @@ namespace ProjectKYS.Player
 
         private void Awake()
         {
-            var player = ServiceLocator.Instance.Get<PlayerController>();
+            var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer();
 
             player.transform.position = transform.position;
             player.transform.rotation = transform.rotation;

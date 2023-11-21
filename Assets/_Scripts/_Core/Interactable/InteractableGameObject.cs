@@ -14,6 +14,7 @@ namespace ProjectKYS
         public override void Interact()
         {
             _interactEvent?.Invoke();
+            base.Interact();
         }
     }
 }
