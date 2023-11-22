@@ -1,19 +1,18 @@
 ﻿using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
 using ProjectKYS.Infrasturcture.Services.Save;
+using ProjectKYS.Infrasturcture.Services.Scene;
 using ProjectKYS.Player;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
 {
     public class SceneSavablesContainer : MonoBehaviour
     {
         private ISaveService _saveService;
-        private SaveReaderSceneObject[] _saveReader;
         private PlayerController _player;
+        private SaveReaderSceneObject[] _saveReader;
 
         private void Awake()
         {
@@ -23,45 +22,37 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
         }
         private void Start()
         {
-            _saveReader = FindObjectsOfType<SaveReaderSceneObject>(true);
             _player = FindObjectOfType<PlayerController>(true);
+        }
+        private void OnDestroy()
+        {
+            _saveService.OnSave -= Save;
+            _saveService.OnLoad -= Load;
         }
 
         private void Save(GameProgressSaveData save)
         {
-            if(!save.SceneSaveData.Any(x=> x.SceneName == SceneName()))
-            {
-                List<GameSceneObjectStateSaveData> sceneObjects = new List<GameSceneObjectStateSaveData>();
-                foreach (var reader in _saveReader)
-                {
-                    if (reader is SavableSceneObject savable)
-                    {
-                        sceneObjects.Add(savable.ToObjectStateSaveData());
-                    }
-                }
+            _saveReader = FindObjectsOfType<SaveReaderSceneObject>(true);
 
-                save.SceneSaveData.Add(new GameSceneSaveData(SceneName(), _player.transform.position.ToSaveData(), sceneObjects.ToArray()));
-
-                return; 
-            }
-
+            List<GameSceneObjectStateSaveData> savables = new List<GameSceneObjectStateSaveData>();
             foreach (var reader in _saveReader)
             {
                 if(reader is SavableSceneObject savable)
                 {
                     savable.Save(save);
+                    savables.Add(savable.ToObjectStateSaveData());
                 }
             }
+            save.ActiveSceneSaveData.SceneObjects = savables.ToArray();
         }
         private void Load(GameProgressSaveData save)
         {
+            _saveReader = FindObjectsOfType<SaveReaderSceneObject>(true);
+
             foreach (var reader in _saveReader)
             {
                 reader.Load(save);
             }
         }
-
-        private string SceneName()
-            => SceneManager.GetActiveScene().name;
     }
 }

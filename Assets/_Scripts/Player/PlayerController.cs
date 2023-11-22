@@ -2,13 +2,17 @@
 using ProjectKYS.Infrasturcture.Services;
 using System.Collections;
 using UnityEngine;
+using ProjectKYS.Infrasturcture.SaveData.Interfaces;
+using ProjectKYS.Infrasturcture.SaveData;
+using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
+using ProjectKYS.Infrasturcture.Services.Scene;
 
 namespace ProjectKYS.Player
 {
     [RequireComponent(typeof(PlayerMove)),
     RequireComponent(typeof(PlayerLook)),
     RequireComponent(typeof(PlayerInteract))]
-    public class PlayerController : MonoBehaviour, IService
+    public class PlayerController : SavableSceneObject, IService
     {
         [SerializeField] private Camera _camera;
 
@@ -23,6 +27,7 @@ namespace ProjectKYS.Player
         public PlayerMove PlayerMove => _playerMoveComponent;
         public PlayerLook PlayerLook => _playerLookComponent;
         public PlayerInteract PlayerInteract => _playerInteractComponent;
+
 
         public void Initialize()
         {
@@ -40,5 +45,22 @@ namespace ProjectKYS.Player
 
         public Vector3 GetRotation()
             => transform.eulerAngles;
+
+        public override void Save(GameProgressSaveData save)
+        {
+            save.ActiveSceneSaveData.Player = new GamePlayerSaveData(
+                transform.position.ToSaveData(),
+                transform.eulerAngles.ToSaveData(),
+                _camera.transform.localEulerAngles.ToSaveData()
+                );
+        }
+
+        public override void Load(GameProgressSaveData save)
+        {
+            var sceneSaveData = save.ActiveSceneSaveData;
+            Vector3 playerOffset = new Vector3(0, 0.2f, 0);
+            _playerMoveComponent.SetPositionAndRotation(sceneSaveData.Player.PlayerPos.ToUnityVector() + playerOffset, sceneSaveData.Player.PlayerRot.ToUnityVector());
+            _camera.transform.localEulerAngles = sceneSaveData.Player.PlayerCameraRot.ToUnityVector();
+        }
     }
 }

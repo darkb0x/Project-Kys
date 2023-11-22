@@ -1,4 +1,6 @@
-﻿using ProjectKYS.Infrasturcture.Services.Factory;
+﻿using ProjectKYS.Infrasturcture.SaveData;
+using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
+using ProjectKYS.Infrasturcture.Services.Factory;
 using System.Collections;
 using UnityEngine;
 
@@ -17,9 +19,7 @@ namespace ProjectKYS.Player
         private void Awake()
         {
             var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer();
-
-            player.transform.position = transform.position;
-            player.transform.rotation = transform.rotation;
+            player.PlayerMove.SetPositionAndRotation(transform.position, transform.eulerAngles);
         }
     }
 }

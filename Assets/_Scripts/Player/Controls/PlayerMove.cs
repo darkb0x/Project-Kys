@@ -46,6 +46,13 @@ namespace ProjectKYS.Player.Controls
 
         public void ResetVelocity() => 
             _velocity = Vector2.zero;
+        public void SetPositionAndRotation(Vector3 position, Vector3 rotationEulerAngles) 
+        {
+            _characterController.enabled = false;
+            transform.position = position;
+            transform.eulerAngles = rotationEulerAngles;
+            _characterController.enabled = true;
+        }
 
         private void ReadInput()
         {  

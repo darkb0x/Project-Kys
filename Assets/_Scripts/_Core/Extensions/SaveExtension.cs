@@ -25,6 +25,11 @@ namespace ProjectKYS
         {
             return new Vector3SaveData(vector.x, vector.y, vector.z);
         }
+
+        public static Vector3 ToUnityVector(this Vector3SaveData saveVector)
+        {
+            return new Vector3(saveVector.X, saveVector.Y, saveVector.Z);
+        }
         #endregion
 
         #region Scene Objects

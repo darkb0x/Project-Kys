@@ -8,5 +8,9 @@ namespace ProjectKYS.Infrasturcture.Services.Save
         public Action<GameProgressSaveData> OnSave { get; set; }
         public Action<GameProgressSaveData> OnLoad { get; set; }
         public GameProgressSaveData SaveData { get; }
+
+        public void Save();
+        public bool Load();
+        public void Reset();
     }
 }

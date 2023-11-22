@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectKYS.Infrasturcture.Services.Save;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -52,16 +53,21 @@ namespace ProjectKYS.Infrasturcture.Services.Scene
             waitLoadScene.allowSceneActivation = activateScene;
             _sceneLoadProgresses.Add(sceneName, waitLoadScene);
 
-            while (!waitLoadScene.isDone)
+            do
             {
                 yield return null;
             }
+            while (!waitLoadScene.isDone);
 
             onLoaded?.Invoke();
+
             if(activateScene)
             {
                 _sceneLoadProgresses.Remove(sceneName);
             }
         }
+
+        public static string GetActiveSceneName()
+            => SceneManager.GetActiveScene().name;
     }
 }
