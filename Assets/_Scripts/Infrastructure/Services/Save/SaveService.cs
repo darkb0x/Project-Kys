@@ -35,17 +35,17 @@ namespace ProjectKYS.Infrasturcture.Services.Save
                 Directory.CreateDirectory(_path);
         }
 
-        public void Save()
+        public void Save(int slotIdx)
         {
             OnSave?.Invoke(_save);
 
             _save.ActiveSceneSaveData.SceneName = SceneService.GetActiveSceneName();
 
-            SaveUtility.SaveDataToJson(_path, SAVE_FILE_NAME, _save);
+            SaveUtility.SaveDataToJson($"{_path}Slot{slotIdx}/", SAVE_FILE_NAME, _save);
         }
-        public bool Load()
+        public bool Load(int slotIdx)
         {
-            _save = SaveUtility.LoadDataFromJson<GameProgressSaveData>(_path, SAVE_FILE_NAME);
+            _save = SaveUtility.LoadDataFromJson<GameProgressSaveData>($"{_path}Slot{slotIdx}/", SAVE_FILE_NAME);
 
             if (_save != null)
             {
@@ -54,18 +54,18 @@ namespace ProjectKYS.Infrasturcture.Services.Save
             }
             else
             {
-                Reset();
+                Reset(slotIdx);
                 return false;
             }          
         }
 
-        public void Reset()
+        public void Reset(int slotIdx, bool load = true)
         {
             _save = new GameProgressSaveData(_initialScene);
-            ServiceLocator.Instance.Get<ISceneService>().Load(_initialScene.SceneName, () =>
-            {
-                Save();
-            });
+            SaveUtility.SaveDataToJson($"{_path}Slot{slotIdx}/", SAVE_FILE_NAME, _save);
+
+            if(load)
+                LoadSaveData();
         }
 
         private void LoadSaveData()

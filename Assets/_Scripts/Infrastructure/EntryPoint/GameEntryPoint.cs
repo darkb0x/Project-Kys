@@ -51,20 +51,21 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             _serviceLocator.Set<IGameFactory>(new GameFactory());
             _serviceLocator.Set<ISceneService>(new SceneService(this));
             _serviceLocator.Set<ISaveService>(new SaveService(
-                new GameSceneSaveData(_fisrtLocationSceneName, new GamePlayerSaveData())
+                new GameSceneSaveData(_fisrtLocationSceneName)
                 ));
         }
 
         [Button]
-        private void Save()
-            => _serviceLocator.Get<ISaveService>().Save();
-
+        private void SaveSlot1()
+            => _serviceLocator.Get<ISaveService>().Save(0);
         [Button]
-        private void Load()
-            => _serviceLocator.Get<ISaveService>().Load();
-
+        private void SaveSlot2()
+            => _serviceLocator.Get<ISaveService>().Save(1);
         [Button]
-        private void ResetSave()
-            => _serviceLocator.Get<ISaveService>().Reset();
+        private void SaveSlot3()
+            => _serviceLocator.Get<ISaveService>().Save(2);
+        [Button]
+        private void SaveSlot4()
+            => _serviceLocator.Get<ISaveService>().Save(3);
     }
 }

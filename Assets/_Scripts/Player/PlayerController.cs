@@ -48,7 +48,7 @@ namespace ProjectKYS.Player
 
         public override void Save(GameProgressSaveData save)
         {
-            save.ActiveSceneSaveData.Player = new GamePlayerSaveData(
+            save.ActiveSceneSaveData.Player = new GamePlayerOrientationSaveData(
                 transform.position.ToSaveData(),
                 transform.eulerAngles.ToSaveData(),
                 _camera.transform.localEulerAngles.ToSaveData()
@@ -58,6 +58,10 @@ namespace ProjectKYS.Player
         public override void Load(GameProgressSaveData save)
         {
             var sceneSaveData = save.ActiveSceneSaveData;
+
+            if (sceneSaveData.Player == null || sceneSaveData.Player.Empty)
+                return;
+
             Vector3 playerOffset = new Vector3(0, 0.2f, 0);
             _playerMoveComponent.SetPositionAndRotation(sceneSaveData.Player.PlayerPos.ToUnityVector() + playerOffset, sceneSaveData.Player.PlayerRot.ToUnityVector());
             _camera.transform.localEulerAngles = sceneSaveData.Player.PlayerCameraRot.ToUnityVector();

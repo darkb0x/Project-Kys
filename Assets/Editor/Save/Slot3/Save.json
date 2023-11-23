@@ -1,0 +1,46 @@
+{
+    "SaveIndex": 0,
+    "ActiveSceneSaveData": {
+        "SceneName": "SampleScene",
+        "Player": {
+            "PlayerPos": {
+                "X": 8.733643531799317,
+                "Y": 1.0799998044967652,
+                "Z": 9.326031684875489
+            },
+            "PlayerRot": {
+                "X": 0.0,
+                "Y": 240.22506713867188,
+                "Z": 0.0
+            },
+            "PlayerCameraRot": {
+                "X": 10.800004959106446,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "Empty": false
+        },
+        "SceneObjects": [
+            {
+                "rid": 1000
+            }
+        ]
+    },
+    "references": {
+        "version": 2,
+        "RefIds": [
+            {
+                "rid": 1000,
+                "type": {
+                    "class": "GameSceneObjectStateSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 3167,
+                    "Enabled": true
+                }
+            }
+        ]
+    }
+}

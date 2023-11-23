@@ -8,13 +8,13 @@ namespace ProjectKYS.Infrasturcture.SaveData
     public class GameSceneSaveData
     {
         public string SceneName;
-        public GamePlayerSaveData Player;
+        public GamePlayerOrientationSaveData Player;
         [SerializeReference] public GameSceneObjectStateSaveData[] SceneObjects;
 
-        public GameSceneSaveData(string sceneName, GamePlayerSaveData player, params GameSceneObjectStateSaveData[] sceneObjects)
+        public GameSceneSaveData(string sceneName, params GameSceneObjectStateSaveData[] sceneObjects)
         {
             SceneName = sceneName;
-            Player = player;
+            Player = null;
             SceneObjects = sceneObjects;
         }
     }
