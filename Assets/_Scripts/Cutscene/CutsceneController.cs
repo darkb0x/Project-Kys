@@ -1,5 +1,6 @@
 ﻿using AYellowpaper.SerializedCollections;
 using ProjectKYS.Infrasturcture.Services.Cutscene;
+using ProjectKYS.Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,19 +19,22 @@ namespace ProjectKYS.Cutscene
             public PlayableDirector Cutscene;
         }
 
+        [SerializeField] private CutsceneUtils _cutsceneUtils;
         [SerializeField] private List<CutsceneData> _cutscenes;
 
         private ICutsceneService _cutsceneService;
 
-        private void Awake()
+
+        public void Initialize(PlayerController player, ICutsceneService cutsceneService)
         {
-            _cutsceneService = ServiceLocator.Instance.Get<ICutsceneService>();
-            _cutsceneService.SetCutsceneList(ConvertCutsceneDataToDict(_cutscenes));
+            _cutsceneUtils.Intialize(player);
+            _cutsceneService = cutsceneService;
+            _cutsceneService.SetCutsceneData(player, ConvertCutsceneDataToDict(_cutscenes));
         }
 
         private void OnDestroy()
         {
-            _cutsceneService.ResetCutsceneList();
+            _cutsceneService.ResetCutsceneData();
         }
 
         private Dictionary<string, PlayableDirector> ConvertCutsceneDataToDict(List<CutsceneData> cutsceneDatas)

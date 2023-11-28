@@ -1,11 +1,7 @@
 ﻿using ProjectKYS.Player.Controls;
-using ProjectKYS.Infrasturcture.Services;
-using System.Collections;
 using UnityEngine;
-using ProjectKYS.Infrasturcture.SaveData.Interfaces;
 using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
-using ProjectKYS.Infrasturcture.Services.Scene;
 
 namespace ProjectKYS.Player
 {
@@ -36,8 +32,9 @@ namespace ProjectKYS.Player
             _playerLookComponent.Initialize(_camera.transform);
         }
 
-        public void SetEnableControls(bool value)
+        public void SetEnabled(bool value)
         {
+            _camera.enabled = value;
             _playerMoveComponent.CanMoving = value;
             _playerLookComponent.CanLook = value;
             _playerInteractComponent.enabled = value;

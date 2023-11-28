@@ -14,15 +14,12 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
         private PlayerController _player;
         private SaveReaderSceneObject[] _saveReader;
 
-        private void Awake()
+        public void Initialize(PlayerController player, ISaveService saveService)
         {
-            _saveService = ServiceLocator.Instance.Get<ISaveService>();
+            _player = player;
+            _saveService = saveService;
             _saveService.OnSave += Save;
             _saveService.OnLoad += Load;
-        }
-        private void Start()
-        {
-            _player = FindObjectOfType<PlayerController>(true);
         }
         private void OnDestroy()
         {

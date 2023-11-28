@@ -16,10 +16,12 @@ namespace ProjectKYS.Player
             Gizmos.DrawLine(transform.position, transform.position + transform.forward);
         }
 
-        private void Awake()
+        public PlayerController SpawnPlayer()
         {
             var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer();
             player.PlayerMove.SetPositionAndRotation(transform.position, transform.eulerAngles);
+
+            return player;
         }
     }
 }

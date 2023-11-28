@@ -51,7 +51,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             _serviceLocator.Set<ISaveService>(new SaveService(
                 new GameSceneSaveData(_fisrtLocationSceneName)
                 ));
-            _serviceLocator.Set<ICutsceneService>(new CutsceneService());
+            _serviceLocator.Set<ICutsceneService>(new CutsceneService(this));
         }
 
         [Button]

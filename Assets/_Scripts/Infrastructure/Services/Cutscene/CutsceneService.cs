@@ -1,23 +1,39 @@
 ﻿using ProjectKYS.Cutscene;
+using ProjectKYS.Player;
+using System;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.Playables;
 
 namespace ProjectKYS.Infrasturcture.Services.Cutscene
 {
     public class CutsceneService : ICutsceneService
     {
-        private Dictionary<string, PlayableDirector> _cutscenes;
+        public static Action OnCutsceneEnd;
 
-        public CutsceneService()
+        private readonly MonoBehaviour _monoBehaviour;
+
+        private Dictionary<string, PlayableDirector> _cutscenes;
+        private PlayerController _player;
+
+        public CutsceneService(MonoBehaviour monoBehaviour)
         {
-            
+            _monoBehaviour = monoBehaviour;
         }
 
-        public void SetCutsceneList(Dictionary<string, PlayableDirector> cutscenes)
+        private void InvokeCutsceneEnd(PlayableDirector playable)
         {
+            OnCutsceneEnd?.Invoke();
+            playable.stopped -= InvokeCutsceneEnd;
+            _player.SetEnabled(true);
+        }
+
+        public void SetCutsceneData(PlayerController player, Dictionary<string, PlayableDirector> cutscenes)
+        {
+            _player = player;
             _cutscenes = cutscenes;
         }
-        public void ResetCutsceneList()
+        public void ResetCutsceneData()
         {
             _cutscenes?.Clear();
         }
@@ -27,7 +43,10 @@ namespace ProjectKYS.Infrasturcture.Services.Cutscene
             if (!_cutscenes.ContainsKey(key))
                 return;
 
+            _player.SetEnabled(false);
+
             _cutscenes[key].Play();
+            _cutscenes[key].stopped += InvokeCutsceneEnd;
         }
     }
 }
