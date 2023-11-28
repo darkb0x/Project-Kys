@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.Variables;
+using ProjectKYS.Infrasturcture.Services.Cutscene;
 using ProjectKYS.Infrasturcture.Services.Factory;
 using ProjectKYS.Infrasturcture.Services.Save;
 using ProjectKYS.Infrasturcture.Services.Scene;
@@ -16,9 +17,6 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
         [Header("Scenes")]
         [SerializeField, Scene] private string _initialSceneName;
         [SerializeField, Scene] private string _fisrtLocationSceneName;
-
-        [Header("Save")]
-        [SerializeField] private bool _resetAtStart = false;
 
         private ServiceLocator _serviceLocator;
 
@@ -53,6 +51,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             _serviceLocator.Set<ISaveService>(new SaveService(
                 new GameSceneSaveData(_fisrtLocationSceneName)
                 ));
+            _serviceLocator.Set<ICutsceneService>(new CutsceneService());
         }
 
         [Button]

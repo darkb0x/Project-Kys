@@ -12,7 +12,7 @@ namespace ProjectKYS.Player
     [RequireComponent(typeof(PlayerMove)),
     RequireComponent(typeof(PlayerLook)),
     RequireComponent(typeof(PlayerInteract))]
-    public class PlayerController : SavableSceneObject, IService
+    public class PlayerController : SavableSceneObject
     {
         [SerializeField] private Camera _camera;
 
