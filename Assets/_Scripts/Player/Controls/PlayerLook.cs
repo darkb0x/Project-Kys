@@ -27,7 +27,6 @@ namespace ProjectKYS.Player.Controls
             ResetOrigin();
 
             _locker.CursorStateChanged += OnCursorStateChanched;
-
         }
 
         public void ResetOrigin()
@@ -45,13 +44,13 @@ namespace ProjectKYS.Player.Controls
         private void Update()
         {
             if(_cursorLocked && CanLook)
-                Loock();
+                Look();
         }
 
         private void OnCursorStateChanched(bool value) => 
             _cursorLocked = value;
 
-        private void Loock()
+        private void Look()
         {
             _mouseX += Input.GetAxis("Mouse X") * Sensitive;
             _mouseY += Input.GetAxis("Mouse Y") * Sensitive;
