@@ -20,6 +20,7 @@ namespace ProjectKYS.Player
         {
             var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer();
             player.PlayerMove.SetPositionAndRotation(transform.position, transform.eulerAngles);
+            player.PlayerLook.ResetOrigin();
 
             return player;
         }

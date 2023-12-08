@@ -38,9 +38,6 @@ namespace ProjectKYS.Player.Controls
             _mouseY = 0;
         }
 
-        private void OnMouseSensivityChanged(float value) => 
-            Sensitive = value;
-
         private void Update()
         {
             if(_cursorLocked && CanLook)

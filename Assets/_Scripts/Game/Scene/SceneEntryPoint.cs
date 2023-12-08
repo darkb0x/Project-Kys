@@ -20,13 +20,24 @@ namespace ProjectKYS
         [SerializeField] private bool _playCutsceneOnStart;
         [SerializeField, ShowIf("_playCutsceneOnStart")] private string _startCutsceneName;
 
+        protected PlayerController _player;
+
         private void Awake()
         {
-            var player = _playerSpawnPoint.SpawnPlayer();
-            _sceneSavablesContainer.Initialize(player, ServiceLocator.Instance.Get<ISaveService>());
-            _cutsceneController.Initialize(player, ServiceLocator.Instance.Get<ICutsceneService>());
+            OnAwake();
         }
         private void Start()
+        {
+            OnStart();
+        }
+
+        protected virtual void OnAwake()
+        {
+            _player = _playerSpawnPoint.SpawnPlayer();
+            _sceneSavablesContainer.Initialize(_player, ServiceLocator.Instance.Get<ISaveService>());
+            _cutsceneController.Initialize(_player, ServiceLocator.Instance.Get<ICutsceneService>());
+        }
+        protected virtual void OnStart()
         {
             if (_playCutsceneOnStart)
                 ServiceLocator.Instance.Get<ICutsceneService>().PlayCutscene(_startCutsceneName);
