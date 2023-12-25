@@ -19,6 +19,7 @@ namespace ProjectKYS.Cutscene
             public PlayableDirector Cutscene;
         }
 
+        public Camera CutsceneCamera;
         [SerializeField] private CutsceneUtils _cutsceneUtils;
         [SerializeField] private List<CutsceneData> _cutscenes;
 

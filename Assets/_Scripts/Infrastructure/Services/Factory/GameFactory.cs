@@ -5,6 +5,13 @@ namespace ProjectKYS.Infrasturcture.Services.Factory
 {
     public class GameFactory : IGameFactory
     {
+        public PlayerController CurrentPlayer 
+        { 
+            get => _currentPlayer; 
+            set => _currentPlayer = value;
+        }
+
+        private PlayerController _currentPlayer;
         private PlayerController _playerPrefab;
 
         public GameFactory()
@@ -17,6 +24,7 @@ namespace ProjectKYS.Infrasturcture.Services.Factory
             var player = Object.Instantiate(_playerPrefab);
             player.Initialize();
 
+            CurrentPlayer = player;
             return player;
         }
     }

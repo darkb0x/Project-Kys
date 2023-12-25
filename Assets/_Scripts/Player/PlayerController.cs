@@ -19,6 +19,7 @@ namespace ProjectKYS.Player
         [SerializeField] private PlayerLook _playerLookComponent;
         [SerializeField] private PlayerInteract _playerInteractComponent;
 
+        public Camera Camera => _camera;
         public CursorLocker CursorLocker => _cursorLocker;
         public PlayerMove PlayerMove => _playerMoveComponent;
         public PlayerLook PlayerLook => _playerLookComponent;

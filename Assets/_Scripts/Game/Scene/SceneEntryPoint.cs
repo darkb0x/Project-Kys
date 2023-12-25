@@ -12,13 +12,13 @@ namespace ProjectKYS
 {
     public class SceneEntryPoint : MonoBehaviour
     {
-        [SerializeField] private PlayerSpawnPoint _playerSpawnPoint;
-        [SerializeField] private CutsceneController _cutsceneController;
-        [SerializeField] private SceneSavablesContainer _sceneSavablesContainer;
+        [SerializeField] protected PlayerSpawnPoint _playerSpawnPoint;
+        [SerializeField] protected CutsceneController _cutsceneController;
+        [SerializeField] protected SceneSavablesContainer _sceneSavablesContainer;
 
         [Header("Scene")]
-        [SerializeField] private bool _playCutsceneOnStart;
-        [SerializeField, ShowIf("_playCutsceneOnStart")] private string _startCutsceneName;
+        [SerializeField] protected bool _playCutsceneOnStart;
+        [SerializeField, ShowIf("_playCutsceneOnStart")] protected string _startCutsceneName;
 
         protected PlayerController _player;
 
