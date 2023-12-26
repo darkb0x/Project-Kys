@@ -1,15 +1,12 @@
 using ProjectKYS.Infrasturcture.Services.Input;
 using ProjectKYS.Player.Controls;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace ProjectKYS.Inventory
 {
     public class InventoryController : MonoBehaviour
     {
-        private const int SLOTS_COUNT = 5;
+        private const int SLOTS_COUNT = 4;
 
         [SerializeField] private InventoryView _view;
 
