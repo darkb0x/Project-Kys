@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 
 namespace ProjectKYS.Inventory
@@ -6,6 +7,9 @@ namespace ProjectKYS.Inventory
     public class InventoryView : MonoBehaviour
     {
         [SerializeField] private Transform _selectedItemViewTransform;
+        [Space]
+        [SerializeField, Layer] private int _defaultLayer;
+        [SerializeField, Layer] private int _itemViewLayer;
 
         public void SetItemActive(ItemComponent[] items, int activeIdx)
         {
@@ -18,13 +22,29 @@ namespace ProjectKYS.Inventory
             item.transform.SetParent(_selectedItemViewTransform);
             item.transform.localPosition = Vector3.zero;
             item.transform.localRotation = Quaternion.identity;
+            ChangeLayer(item.gameObject, _itemViewLayer);
             item.gameObject.SetActive(true);
         }
         public void RemoveItem(ItemComponent item)
         {
             item.gameObject.SetActive(false);
             item.transform.SetParent(null);
+            ChangeLayer(item.gameObject, _defaultLayer);
             item.gameObject.SetActive(true);
+        }
+
+        private void ChangeLayer(GameObject target, int layer)
+        {
+            target.layer = layer;
+
+            foreach (Transform child in target.transform)
+            {
+                child.gameObject.layer = layer;
+
+                Transform hasChild = child.GetComponentInChildren<Transform>();
+                if (hasChild != null)
+                    ChangeLayer(hasChild.gameObject, layer);
+            }
         }
     }
 }
