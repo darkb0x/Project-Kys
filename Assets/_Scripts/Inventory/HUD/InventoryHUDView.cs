@@ -37,17 +37,17 @@ namespace ProjectKYS.Inventory.HUD
         {
             base.SubscribeToEvents();
 
-            _inventoryView.OnViewStateChanged += OnViewStateChanged;
+            _inventoryView.OnViewStateUpdated += OnViewStateUpdated;
         }
 
         protected override void UnsibscribeFromEvents()
         {
             base.UnsibscribeFromEvents();
 
-            _inventoryView.OnViewStateChanged -= OnViewStateChanged;
+            _inventoryView.OnViewStateUpdated -= OnViewStateUpdated;
         }
 
-        private void OnViewStateChanged(ItemComponent[] items, int selectedIdx)
+        private void OnViewStateUpdated(ItemComponent[] items, int selectedIdx)
         {
             for (int i = 0; i < items.Length; i++)
             {

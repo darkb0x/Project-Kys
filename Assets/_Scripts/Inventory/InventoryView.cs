@@ -15,7 +15,7 @@ namespace ProjectKYS.Inventory
         [SerializeField, Layer] private int _itemLayer;
         [SerializeField, Layer] private int _itemViewLayer;
 
-        public Action<ItemComponent[], int> OnViewStateChanged;
+        public Action<ItemComponent[], int> OnViewStateUpdated;
 
         private InventoryHUDView _hudView;
 
@@ -25,12 +25,12 @@ namespace ProjectKYS.Inventory
             _hudView.Assign(this);
         }
 
-        public void SetItemActive(ItemComponent[] items, int activeIdx)
+        public void UpdateView(ItemComponent[] items, int activeIdx)
         {
             for (int i = 0; i < items.Length; i++)
                 items[i]?.gameObject.SetActive(i == activeIdx);
 
-            OnViewStateChanged?.Invoke(items, activeIdx);
+            OnViewStateUpdated?.Invoke(items, activeIdx);
         }
         public void AddItem(ItemComponent item)
         {

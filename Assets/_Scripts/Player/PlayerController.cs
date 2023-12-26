@@ -38,7 +38,7 @@ namespace ProjectKYS.Player
             _cursorLocker.Initialize();
             _playerMoveComponent.Initialize(inputService);
             _playerLookComponent.Initialize(_camera.transform, inputService);
-            _playerInteractComponent.Initialize(inputService, hudService);
+            _playerInteractComponent.Initialize(_inventoryController, inputService, hudService);
             _inventoryController.Initialize(_playerInteractComponent, inputService, hudService);
         }
 
@@ -48,6 +48,7 @@ namespace ProjectKYS.Player
             _playerMoveComponent.CanMoving = value;
             _playerLookComponent.CanLook = value;
             _playerInteractComponent.enabled = value;
+            _inventoryController.enabled = value;
         }
 
         public Vector3 GetRotation()

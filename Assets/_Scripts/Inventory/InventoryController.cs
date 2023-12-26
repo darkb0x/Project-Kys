@@ -25,7 +25,7 @@ namespace ProjectKYS.Inventory
             _selectedSlot = 0;
 
             _view.Initialize(hudService);
-            _view.SetItemActive(_itemSlots, _selectedSlot);
+            _view.UpdateView(_itemSlots, _selectedSlot);
 
             _inputService.GetPlayerInputHandler().SelectItemEvent += OnSelectSlot;
             _inputService.GetPlayerInputHandler().DropItemEvent += OnDropItem;
@@ -39,6 +39,33 @@ namespace ProjectKYS.Inventory
             _playerInteract.OnInteracted -= OnTryingTakeItem;
         }
 
+        public bool UseItem(InventoryItem item)
+        {
+            if (_itemSlots[_selectedSlot] == null)
+                return false;
+
+            if (_itemSlots[_selectedSlot].Item == item)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public bool TakeItem(InventoryItem item)
+        {
+            if (UseItem(item))
+            {
+                Destroy(_itemSlots[_selectedSlot].gameObject);
+                _itemSlots[_selectedSlot] = null;
+
+                _view.UpdateView(_itemSlots, _selectedSlot);
+
+                return true;
+            }
+
+            return false;
+        }
+
         private void SetItemToSlot(int slot, ItemComponent item)
         {
             _itemSlots[slot] = item;
@@ -47,7 +74,7 @@ namespace ProjectKYS.Inventory
             item.Rigidbody.isKinematic = true;
             _view.AddItem(item);
 
-            _view.SetItemActive(_itemSlots, _selectedSlot);
+            _view.UpdateView(_itemSlots, _selectedSlot);
         }
         private void DropItemFromSlot(int slot)
         {
@@ -59,7 +86,7 @@ namespace ProjectKYS.Inventory
 
             _itemSlots[slot] = null;
 
-            _view.SetItemActive(_itemSlots, _selectedSlot);
+            _view.UpdateView(_itemSlots, _selectedSlot);
         }
 
         private bool IsSelectedSlotFree()
@@ -74,7 +101,7 @@ namespace ProjectKYS.Inventory
             else
                 _selectedSlot += delta;
 
-            _view.SetItemActive(_itemSlots, _selectedSlot);
+            _view.UpdateView(_itemSlots, _selectedSlot);
 
             //Debug.Log($"Selected slot: {_selectedSlot} '{_itemSlots[_selectedSlot]?.Item.Name}'");
         }

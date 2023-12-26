@@ -1,5 +1,6 @@
 ﻿using ProjectKYS.Infrasturcture.Services.HUD;
 using ProjectKYS.Infrasturcture.Services.Input;
+using ProjectKYS.Inventory;
 using ProjectKYS.Player.Controls.HUD;
 using System;
 using System.Collections;
@@ -17,6 +18,7 @@ namespace ProjectKYS.Player.Controls
         public Action<Interactable> OnInteracted;
 
         private IInputService _inputService;
+        private InventoryController _inventoryController;
         private InteractableHUDView _hudView;
         private Interactable m_currentInteractable;
         private Interactable _currentInteractable
@@ -29,9 +31,10 @@ namespace ProjectKYS.Player.Controls
             }
         }
 
-        public void Initialize(IInputService inputService, IHUDService hudService)
+        public void Initialize(InventoryController inventory, IInputService inputService, IHUDService hudService)
         {
             _inputService = inputService;
+            _inventoryController = inventory;
 
             _hudView = hudService.GetHudElement<InteractableHUDView>();
             _hudView.Assign(this);
@@ -72,7 +75,14 @@ namespace ProjectKYS.Player.Controls
 
         private void Interact()
         {
-            _currentInteractable?.Interact();
+            if (_currentInteractable == null)
+                return;
+
+            if (_currentInteractable is InteractableWithRequirableItem interactableWithRequirableItem)
+                interactableWithRequirableItem.Interact(_inventoryController);
+            else
+                _currentInteractable.Interact();
+
             OnInteracted?.Invoke(_currentInteractable);
         }
     }
