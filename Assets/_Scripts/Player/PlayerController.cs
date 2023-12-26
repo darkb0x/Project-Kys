@@ -38,7 +38,7 @@ namespace ProjectKYS.Player
             _cursorLocker.Initialize();
             _playerMoveComponent.Initialize(inputService);
             _playerLookComponent.Initialize(_camera.transform, inputService);
-            _playerInteractComponent.Initialize(inputService);
+            _playerInteractComponent.Initialize(inputService, hudService);
             _inventoryController.Initialize(_playerInteractComponent, inputService, hudService);
         }
 

@@ -22,12 +22,6 @@ namespace ProjectKYS.Inventory.HUD
 
         public override void Assign(InventoryView input)
         {
-            if (!_isInitialized)
-            {
-                Debug.LogError($"{gameObject.name} is not initialized for assign");
-                return;
-            }
-
             _inventoryView = input;
 
             _slots = new List<InventoryHUDSlot>();

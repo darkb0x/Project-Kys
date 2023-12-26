@@ -1,4 +1,6 @@
-﻿using ProjectKYS.Infrasturcture.Services.Input;
+﻿using ProjectKYS.Infrasturcture.Services.HUD;
+using ProjectKYS.Infrasturcture.Services.Input;
+using ProjectKYS.Player.Controls.HUD;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -11,14 +13,28 @@ namespace ProjectKYS.Player.Controls
         [SerializeField] private float _rayDistance;
         [SerializeField] private LayerMask _interactableLayers;
 
+        public Action<Interactable> OnInteractableChanged;
         public Action<Interactable> OnInteracted;
 
         private IInputService _inputService;
-        private Interactable _currentInteractable;
+        private InteractableHUDView _hudView;
+        private Interactable m_currentInteractable;
+        private Interactable _currentInteractable
+        {
+            get => m_currentInteractable;
+            set
+            {
+                m_currentInteractable = value;
+                OnInteractableChanged?.Invoke(m_currentInteractable);
+            }
+        }
 
-        public void Initialize(IInputService inputService)
+        public void Initialize(IInputService inputService, IHUDService hudService)
         {
             _inputService = inputService;
+
+            _hudView = hudService.GetHudElement<InteractableHUDView>();
+            _hudView.Assign(this);
 
             _inputService.GetPlayerInputHandler().InteractEvent += Interact;
         }
