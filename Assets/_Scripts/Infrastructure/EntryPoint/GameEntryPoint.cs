@@ -3,6 +3,7 @@ using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.Variables;
 using ProjectKYS.Infrasturcture.Services.Cutscene;
 using ProjectKYS.Infrasturcture.Services.Factory;
+using ProjectKYS.Infrasturcture.Services.HUD;
 using ProjectKYS.Infrasturcture.Services.Input;
 using ProjectKYS.Infrasturcture.Services.Save;
 using ProjectKYS.Infrasturcture.Services.Scene;
@@ -54,6 +55,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
                 new GameSceneSaveData(_fisrtLocationSceneName)
                 ));
             _serviceLocator.Set<ICutsceneService>(new CutsceneService(this));
+            _serviceLocator.Set<IHUDService>(new HUDService());
         }
 
         [Button]

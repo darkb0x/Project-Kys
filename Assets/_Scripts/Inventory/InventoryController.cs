@@ -1,4 +1,5 @@
 using ProjectKYS.Infrasturcture.Services.Input;
+using ProjectKYS.Infrasturcture.Services.HUD;
 using ProjectKYS.Player.Controls;
 using UnityEngine;
 
@@ -6,7 +7,7 @@ namespace ProjectKYS.Inventory
 {
     public class InventoryController : MonoBehaviour
     {
-        private const int SLOTS_COUNT = 4;
+        public const int SLOTS_COUNT = 4;
 
         [SerializeField] private InventoryView _view;
 
@@ -15,12 +16,16 @@ namespace ProjectKYS.Inventory
         private ItemComponent[] _itemSlots;
         private int _selectedSlot;
 
-        public void Initialize(PlayerInteract playerInteract, IInputService inputService)
+        public void Initialize(PlayerInteract playerInteract, IInputService inputService, IHUDService hudService)
         {
             _inputService = inputService;
             _playerInteract = playerInteract;
 
             _itemSlots = new ItemComponent[SLOTS_COUNT];
+            _selectedSlot = 0;
+
+            _view.Initialize(hudService);
+            _view.SetItemActive(_itemSlots, _selectedSlot);
 
             _inputService.GetPlayerInputHandler().SelectItemEvent += OnSelectSlot;
             _inputService.GetPlayerInputHandler().DropItemEvent += OnDropItem;
@@ -41,6 +46,8 @@ namespace ProjectKYS.Inventory
             item.IsInteractable = false;
             item.Rigidbody.isKinematic = true;
             _view.AddItem(item);
+
+            _view.SetItemActive(_itemSlots, _selectedSlot);
         }
         private void DropItemFromSlot(int slot)
         {
@@ -51,6 +58,8 @@ namespace ProjectKYS.Inventory
             item.Rigidbody.isKinematic = false;
 
             _itemSlots[slot] = null;
+
+            _view.SetItemActive(_itemSlots, _selectedSlot);
         }
 
         private bool IsSelectedSlotFree()
@@ -67,7 +76,7 @@ namespace ProjectKYS.Inventory
 
             _view.SetItemActive(_itemSlots, _selectedSlot);
 
-            Debug.Log($"Selected slot: {_selectedSlot} '{_itemSlots[_selectedSlot]?.Item.Name}'");
+            //Debug.Log($"Selected slot: {_selectedSlot} '{_itemSlots[_selectedSlot]?.Item.Name}'");
         }
         private void OnDropItem()
         {

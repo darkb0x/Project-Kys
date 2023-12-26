@@ -3,6 +3,8 @@ using UnityEngine;
 using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
 using ProjectKYS.Inventory;
+using ProjectKYS.Infrasturcture.Services.HUD;
+using ProjectKYS.Infrasturcture.Services.Factory;
 
 namespace ProjectKYS.Player
 {
@@ -29,13 +31,15 @@ namespace ProjectKYS.Player
         public InventoryController InventoryController => _inventoryController;
 
 
-        public void Initialize(Infrasturcture.Services.Input.IInputService inputService)
+        public void Initialize(Infrasturcture.Services.Input.IInputService inputService, IHUDService hudService, IGameFactory gameFactory)
         {
+            hudService.AssignHUDContainer(gameFactory.CreateHUD(hudService));
+
             _cursorLocker.Initialize();
             _playerMoveComponent.Initialize(inputService);
             _playerLookComponent.Initialize(_camera.transform, inputService);
             _playerInteractComponent.Initialize(inputService);
-            _inventoryController.Initialize(_playerInteractComponent, inputService);
+            _inventoryController.Initialize(_playerInteractComponent, inputService, hudService);
         }
 
         public void SetEnabled(bool value)

@@ -1,4 +1,7 @@
 ﻿using NaughtyAttributes;
+using ProjectKYS.Infrasturcture.Services.HUD;
+using ProjectKYS.Inventory.HUD;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -12,10 +15,22 @@ namespace ProjectKYS.Inventory
         [SerializeField, Layer] private int _itemLayer;
         [SerializeField, Layer] private int _itemViewLayer;
 
+        public Action<ItemComponent[], int> OnViewStateChanged;
+
+        private InventoryHUDView _hudView;
+
+        public void Initialize(IHUDService hudService)
+        {
+            _hudView = hudService.GetHudElement<InventoryHUDView>();
+            _hudView.Assign(this);
+        }
+
         public void SetItemActive(ItemComponent[] items, int activeIdx)
         {
             for (int i = 0; i < items.Length; i++)
                 items[i]?.gameObject.SetActive(i == activeIdx);
+
+            OnViewStateChanged?.Invoke(items, activeIdx);
         }
         public void AddItem(ItemComponent item)
         {

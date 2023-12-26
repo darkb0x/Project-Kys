@@ -1,6 +1,7 @@
 ﻿using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
 using ProjectKYS.Infrasturcture.Services.Factory;
+using ProjectKYS.Infrasturcture.Services.HUD;
 using System.Collections;
 using UnityEngine;
 
@@ -16,9 +17,9 @@ namespace ProjectKYS.Player
             Gizmos.DrawLine(transform.position, transform.position + transform.forward);
         }
 
-        public PlayerController SpawnPlayer(Infrasturcture.Services.Input.IInputService inputService)
+        public PlayerController SpawnPlayer(Infrasturcture.Services.Input.IInputService inputService, IHUDService hudService)
         {
-            var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer(inputService);
+            var player = ServiceLocator.Instance.Get<IGameFactory>().CreatePlayer(inputService, hudService);
             player.PlayerMove.SetPositionAndRotation(transform.position, transform.eulerAngles);
             player.PlayerLook.ResetOrigin();
 
