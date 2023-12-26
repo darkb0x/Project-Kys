@@ -7,8 +7,9 @@ namespace ProjectKYS.Inventory
     public class InventoryView : MonoBehaviour
     {
         [SerializeField] private Transform _selectedItemViewTransform;
+        [SerializeField] private Transform _selectedItemDropPosition;
         [Space]
-        [SerializeField, Layer] private int _defaultLayer;
+        [SerializeField, Layer] private int _itemLayer;
         [SerializeField, Layer] private int _itemViewLayer;
 
         public void SetItemActive(ItemComponent[] items, int activeIdx)
@@ -29,7 +30,8 @@ namespace ProjectKYS.Inventory
         {
             item.gameObject.SetActive(false);
             item.transform.SetParent(null);
-            ChangeLayer(item.gameObject, _defaultLayer);
+            item.transform.position = _selectedItemDropPosition.position;
+            ChangeLayer(item.gameObject, _itemLayer);
             item.gameObject.SetActive(true);
         }
 
