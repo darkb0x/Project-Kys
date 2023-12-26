@@ -26,11 +26,12 @@ namespace ProjectKYS.Player
         public PlayerInteract PlayerInteract => _playerInteractComponent;
 
 
-        public void Initialize()
+        public void Initialize(Infrasturcture.Services.Input.IInputService inputService)
         {
             _cursorLocker.Initialize();
-            _playerMoveComponent.Initialize();
-            _playerLookComponent.Initialize(_camera.transform);
+            _playerMoveComponent.Initialize(inputService);
+            _playerLookComponent.Initialize(_camera.transform, inputService);
+            _playerInteractComponent.Initialize(inputService);
         }
 
         public void SetEnabled(bool value)

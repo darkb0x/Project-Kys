@@ -1,3 +1,4 @@
+using ProjectKYS.Infrasturcture.Services.Input;
 using System;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace ProjectKYS.Player.Controls
         public float Sensitive = 1.5f;
         public bool CanLook = true;
 
+        private IInputService _inputService;
         private Transform _camera;
         private bool _cursorLocked;
         private float _mouseX;
@@ -21,8 +23,9 @@ namespace ProjectKYS.Player.Controls
         private Quaternion _bodyOriginalRot = Quaternion.identity;
         private Quaternion _cameraOriginalRot = Quaternion.identity;
 
-        public void Initialize(Transform cameraTransform)
+        public void Initialize(Transform cameraTransform, IInputService inputService)
         {
+            _inputService = inputService;
             _camera = cameraTransform;
             ResetOrigin();
 
@@ -49,8 +52,9 @@ namespace ProjectKYS.Player.Controls
 
         private void Look()
         {
-            _mouseX += Input.GetAxis("Mouse X") * Sensitive;
-            _mouseY += Input.GetAxis("Mouse Y") * Sensitive;
+            Vector2 mouseDelta = _inputService.GetPlayerInputHandler().GetMouseDelta();
+            _mouseX += mouseDelta.x * Sensitive;
+            _mouseY += mouseDelta.y * Sensitive;
 
             _mouseX = _mouseX % 360;
             _mouseY = _mouseY % 360;

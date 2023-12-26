@@ -6,6 +6,6 @@ namespace ProjectKYS.Infrasturcture.Services.Factory
     public interface IGameFactory : IService
     {
         public PlayerController CurrentPlayer { get; set; }
-        public PlayerController CreatePlayer();
+        public PlayerController CreatePlayer(Input.IInputService inputService);
     }
 }

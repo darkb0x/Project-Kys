@@ -3,6 +3,7 @@ using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.Variables;
 using ProjectKYS.Infrasturcture.Services.Cutscene;
 using ProjectKYS.Infrasturcture.Services.Factory;
+using ProjectKYS.Infrasturcture.Services.Input;
 using ProjectKYS.Infrasturcture.Services.Save;
 using ProjectKYS.Infrasturcture.Services.Scene;
 using UnityEngine;
@@ -47,6 +48,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
         private void RegisterServices()
         {
             _serviceLocator.Set<IGameFactory>(new GameFactory());
+            _serviceLocator.Set<IInputService>(new InputService());
             _serviceLocator.Set<ISceneService>(new SceneService(this));
             _serviceLocator.Set<ISaveService>(new SaveService(
                 new GameSceneSaveData(_fisrtLocationSceneName)

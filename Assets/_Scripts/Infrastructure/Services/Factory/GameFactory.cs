@@ -1,4 +1,5 @@
-﻿using ProjectKYS.Player;
+﻿using ProjectKYS.Infrasturcture.Services.Input;
+using ProjectKYS.Player;
 using UnityEngine;
 
 namespace ProjectKYS.Infrasturcture.Services.Factory
@@ -19,10 +20,10 @@ namespace ProjectKYS.Infrasturcture.Services.Factory
             _playerPrefab = Resources.Load<PlayerController>(AssetPaths.PLAYER);
         }
 
-        public PlayerController CreatePlayer()
+        public PlayerController CreatePlayer(IInputService inputService)
         {
             var player = Object.Instantiate(_playerPrefab);
-            player.Initialize();
+            player.Initialize(inputService);
 
             CurrentPlayer = player;
             return player;

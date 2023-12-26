@@ -1,3 +1,4 @@
+using ProjectKYS.Infrasturcture.Services.Input;
 using System;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ namespace ProjectKYS.Player.Controls
 
         public enum MoveState { Stay, Walking }
 
+        private IInputService _inputService;
         private Vector3 _velocity;
         private Vector3 _smoothV;
         private Vector2 _input;
@@ -29,8 +31,9 @@ namespace ProjectKYS.Player.Controls
 
         public Vector3 Velocity => _characterController.velocity;
 
-        public void Initialize()
+        public void Initialize(IInputService inputService)
         {
+            _inputService = inputService;
             CanMoving = true;
         }
 
@@ -59,7 +62,7 @@ namespace ProjectKYS.Player.Controls
             _currentSpeed = _walkSpeed;
             _state = MoveState.Walking;
             
-            _input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+            _input = _inputService.GetPlayerInputHandler().GetMovement();
 
             if (_input.magnitude == 0)
                 _state = MoveState.Stay;

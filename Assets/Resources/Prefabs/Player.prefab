@@ -273,7 +273,7 @@ MonoBehaviour:
   _maxX: 360
   _minY: -90
   _maxY: 90
-  Sensitive: 1.5
+  Sensitive: 0.2
   CanLook: 1
 --- !u!114 &5004166341506789431
 MonoBehaviour:

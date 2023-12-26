@@ -1,15 +1,29 @@
-﻿using System.Collections;
+﻿using ProjectKYS.Infrasturcture.Services.Input;
+using System;
+using System.Collections;
 using UnityEngine;
 
 namespace ProjectKYS.Player.Controls
 {
     public class PlayerInteract : MonoBehaviour
     {
-        public const KeyCode INTERACTION_BUTTON = KeyCode.E;
-
         [SerializeField] private Camera _camera;
         [SerializeField] private float _rayDistance;
         [SerializeField] private LayerMask _interactableLayers;
+
+        private IInputService _inputService;
+        private Interactable _currentInteractable;
+
+        public void Initialize(IInputService inputService)
+        {
+            _inputService = inputService;
+
+            _inputService.GetPlayerInputHandler().InteractEvent += Interact;
+        }
+        private void OnDestroy()
+        {
+            _inputService.GetPlayerInputHandler().InteractEvent -= Interact;
+        }
 
         private void OnDrawGizmosSelected()
         {
@@ -29,15 +43,18 @@ namespace ProjectKYS.Player.Controls
             {
                 if (hit.collider.TryGetComponent(out Interactable interactable))
                 {
-                    if (!interactable.IsInteractable)
-                        return;
-
-                    if(Input.GetKeyDown(INTERACTION_BUTTON))
-                    {
-                        interactable.Interact();
-                    }
+                    _currentInteractable = interactable.IsInteractable ? interactable : null;
                 }
+                else
+                    _currentInteractable = null;
             }
+            else
+                _currentInteractable = null;
+        }
+
+        private void Interact()
+        {
+            _currentInteractable?.Interact();
         }
     }
 }

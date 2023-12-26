@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using ProjectKYS.Cutscene;
 using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
 using ProjectKYS.Infrasturcture.Services.Cutscene;
+using ProjectKYS.Infrasturcture.Services.Input;
 using ProjectKYS.Infrasturcture.Services.Save;
 using ProjectKYS.Player;
 using System.Collections;
@@ -33,7 +34,7 @@ namespace ProjectKYS
 
         protected virtual void OnAwake()
         {
-            _player = _playerSpawnPoint.SpawnPlayer();
+            _player = _playerSpawnPoint.SpawnPlayer(ServiceLocator.Instance.Get<IInputService>()); ;
             _sceneSavablesContainer.Initialize(_player, ServiceLocator.Instance.Get<ISaveService>());
             _cutsceneController.Initialize(_player, ServiceLocator.Instance.Get<ICutsceneService>());
         }
