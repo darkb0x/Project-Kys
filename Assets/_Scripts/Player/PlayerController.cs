@@ -2,6 +2,7 @@
 using UnityEngine;
 using ProjectKYS.Infrasturcture.SaveData;
 using ProjectKYS.Infrasturcture.SaveData.SceneObjects;
+using ProjectKYS.Inventory;
 
 namespace ProjectKYS.Player
 {
@@ -18,12 +19,14 @@ namespace ProjectKYS.Player
         [SerializeField] private PlayerMove _playerMoveComponent;
         [SerializeField] private PlayerLook _playerLookComponent;
         [SerializeField] private PlayerInteract _playerInteractComponent;
+        [SerializeField] private InventoryController _inventoryController;
 
         public Camera Camera => _camera;
         public CursorLocker CursorLocker => _cursorLocker;
         public PlayerMove PlayerMove => _playerMoveComponent;
         public PlayerLook PlayerLook => _playerLookComponent;
         public PlayerInteract PlayerInteract => _playerInteractComponent;
+        public InventoryController InventoryController => _inventoryController;
 
 
         public void Initialize(Infrasturcture.Services.Input.IInputService inputService)
@@ -32,6 +35,7 @@ namespace ProjectKYS.Player
             _playerMoveComponent.Initialize(inputService);
             _playerLookComponent.Initialize(_camera.transform, inputService);
             _playerInteractComponent.Initialize(inputService);
+            _inventoryController.Initialize(_playerInteractComponent, inputService);
         }
 
         public void SetEnabled(bool value)

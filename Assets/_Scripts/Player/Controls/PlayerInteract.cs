@@ -11,6 +11,8 @@ namespace ProjectKYS.Player.Controls
         [SerializeField] private float _rayDistance;
         [SerializeField] private LayerMask _interactableLayers;
 
+        public Action<Interactable> OnInteracted;
+
         private IInputService _inputService;
         private Interactable _currentInteractable;
 
@@ -55,6 +57,7 @@ namespace ProjectKYS.Player.Controls
         private void Interact()
         {
             _currentInteractable?.Interact();
+            OnInteracted?.Invoke(_currentInteractable);
         }
     }
 }

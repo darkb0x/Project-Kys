@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2093877551348669250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8171987456447572878}
+  m_Layer: 0
+  m_Name: ItemView
+  m_TagString: Untagged
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8171987456447572878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093877551348669250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.463}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1426237846611139407}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4982082245885677508
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +95,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8171987456447572878}
   m_Father: {fileID: 2013459159412453258}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7889520650288737479
@@ -198,6 +230,8 @@ GameObject:
   - component: {fileID: 5004166341506789431}
   - component: {fileID: 7475661570192095083}
   - component: {fileID: 5982700894178154512}
+  - component: {fileID: 2967381998390123735}
+  - component: {fileID: 461386893798145258}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,6 +273,7 @@ MonoBehaviour:
   _playerMoveComponent: {fileID: 178681648311748906}
   _playerLookComponent: {fileID: 3316470647551958781}
   _playerInteractComponent: {fileID: 5004166341506789431}
+  _inventoryController: {fileID: 2967381998390123735}
 --- !u!114 &178681648311748906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,3 +367,29 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2967381998390123735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707961087966956376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43703dc9dbff0c440aae97dbce4f2c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _view: {fileID: 461386893798145258}
+--- !u!114 &461386893798145258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6707961087966956376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be38fb2638763741aaa12cf22aa3e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selectedItemViewTransform: {fileID: 8171987456447572878}
