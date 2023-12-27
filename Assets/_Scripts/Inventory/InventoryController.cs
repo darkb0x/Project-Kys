@@ -10,6 +10,7 @@ namespace ProjectKYS.Inventory
         public const int SLOTS_COUNT = 4;
 
         [SerializeField] private InventoryView _view;
+        [SerializeField] private InventoryItemInspect _itemInspect;
 
         private IInputService _inputService;
         private PlayerInteract _playerInteract;
@@ -26,6 +27,7 @@ namespace ProjectKYS.Inventory
 
             _view.Initialize(hudService);
             _view.UpdateView(_itemSlots, _selectedSlot);
+            _itemInspect.Initialize(inputService);
 
             _inputService.GetPlayerInputHandler().SelectItemEvent += OnSelectSlot;
             _inputService.GetPlayerInputHandler().DropItemEvent += OnDropItem;
@@ -75,6 +77,7 @@ namespace ProjectKYS.Inventory
             _view.AddItem(item);
 
             _view.UpdateView(_itemSlots, _selectedSlot);
+            _itemInspect.SetSelectedItem(_itemSlots[_selectedSlot]);
         }
         private void DropItemFromSlot(int slot)
         {
@@ -102,6 +105,7 @@ namespace ProjectKYS.Inventory
                 _selectedSlot += delta;
 
             _view.UpdateView(_itemSlots, _selectedSlot);
+            _itemInspect.SetSelectedItem(_itemSlots[_selectedSlot]);
 
             //Debug.Log($"Selected slot: {_selectedSlot} '{_itemSlots[_selectedSlot]?.Item.Name}'");
         }

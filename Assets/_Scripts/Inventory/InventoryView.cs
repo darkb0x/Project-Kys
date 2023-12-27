@@ -1,5 +1,6 @@
 ﻿using NaughtyAttributes;
 using ProjectKYS.Infrasturcture.Services.HUD;
+using ProjectKYS.Infrasturcture.Services.Input;
 using ProjectKYS.Inventory.HUD;
 using System;
 using System.Collections;

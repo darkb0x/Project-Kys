@@ -9,12 +9,14 @@ namespace ProjectKYS.Infrasturcture.Services.Input
         public event InputCallbackDelegate InteractEvent;
         public event InputCallbackDelegate<int> SelectItemEvent;
         public event InputCallbackDelegate DropItemEvent;
+        public event InputCallbackDelegate InspectItemEvent;
 
         public PlayerInputHandler(InputMap inputMap) : base(inputMap)
         {
             _inputMap.Player.Interact.performed += OnInteract;
             _inputMap.Player.SelectItem.performed += OnSelectItem;
             _inputMap.Player.DropItem.performed += OnDropItem;
+            _inputMap.Player.InspectItem.performed += OnInspectItem;
         }
 
         public override void Dispose()
@@ -22,6 +24,7 @@ namespace ProjectKYS.Infrasturcture.Services.Input
             _inputMap.Player.Interact.performed -= OnInteract;
             _inputMap.Player.SelectItem.performed -= OnSelectItem;
             _inputMap.Player.DropItem.performed -= OnDropItem;
+            _inputMap.Player.InspectItem.performed -= OnInspectItem;
         }
 
         public override void SetActive(bool active)
@@ -42,5 +45,7 @@ namespace ProjectKYS.Infrasturcture.Services.Input
             => SelectItemEvent?.Invoke((int)ctx.ReadValue<float>());
         private void OnDropItem(InputAction.CallbackContext _)
             => DropItemEvent?.Invoke();
+        private void OnInspectItem(InputAction.CallbackContext _)
+            => InspectItemEvent?.Invoke();
     }
 }

@@ -71,6 +71,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InspectItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""5004f135-5e98-4063-93f9-21e9848aeb59"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,7 +161,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Arrows"",
+                    ""name"": ""Buttons"",
                     ""id"": ""bd3489c4-5148-40b7-991a-cf1c20ee0f6f"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -194,6 +203,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""action"": ""DropItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fa94725-6c21-493e-9ddd-f41ebb3584fd"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InspectItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -209,6 +229,24 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InspectItemDirection"",
+                    ""type"": ""Value"",
+                    ""id"": ""4ad071b1-8cfb-4081-863d-1196e5bdf6b7"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StopItemInspect"",
+                    ""type"": ""Button"",
+                    ""id"": ""eea6500e-8258-41b0-9cb8-f5b5c9cbfa8a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -220,6 +258,138 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Close"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""e154a0b9-e38a-46fa-9461-10d7ae78810c"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""283c09a5-1326-456c-b60e-2ea18df93df5"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""727676d8-19e8-4fa0-bed1-d7459cd1b0bd"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""66a463d1-e5cd-4dc8-9d47-6c55df80a2fc"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""1a7de7f6-4aca-4187-bcac-c6dbb9a419d8"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrows"",
+                    ""id"": ""8662f0b4-6e6b-48c0-9bde-ed849b9aac2d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d97dd9ee-ec75-44af-aa8b-470ffb4f0eca"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""bc358e77-bdd8-4cfa-ae5c-e822cb1e5a69"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b2e9d423-7ca9-4fa4-8adf-ca806291a3a8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""45716f37-d0d5-4527-b3aa-8f3d21163046"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""InspectItemDirection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""945e78ab-fb10-433a-bdc0-30fdd25be430"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StopItemInspect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5bd7f2e8-f6a7-41d2-8106-f135c16516f6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""StopItemInspect"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -252,9 +422,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Player_MouseDelta = m_Player.FindAction("MouseDelta", throwIfNotFound: true);
         m_Player_SelectItem = m_Player.FindAction("SelectItem", throwIfNotFound: true);
         m_Player_DropItem = m_Player.FindAction("DropItem", throwIfNotFound: true);
+        m_Player_InspectItem = m_Player.FindAction("InspectItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Close = m_UI.FindAction("Close", throwIfNotFound: true);
+        m_UI_InspectItemDirection = m_UI.FindAction("InspectItemDirection", throwIfNotFound: true);
+        m_UI_StopItemInspect = m_UI.FindAction("StopItemInspect", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -321,6 +494,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MouseDelta;
     private readonly InputAction m_Player_SelectItem;
     private readonly InputAction m_Player_DropItem;
+    private readonly InputAction m_Player_InspectItem;
     public struct PlayerActions
     {
         private @InputMap m_Wrapper;
@@ -330,6 +504,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @MouseDelta => m_Wrapper.m_Player_MouseDelta;
         public InputAction @SelectItem => m_Wrapper.m_Player_SelectItem;
         public InputAction @DropItem => m_Wrapper.m_Player_DropItem;
+        public InputAction @InspectItem => m_Wrapper.m_Player_InspectItem;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -354,6 +529,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @DropItem.started += instance.OnDropItem;
             @DropItem.performed += instance.OnDropItem;
             @DropItem.canceled += instance.OnDropItem;
+            @InspectItem.started += instance.OnInspectItem;
+            @InspectItem.performed += instance.OnInspectItem;
+            @InspectItem.canceled += instance.OnInspectItem;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -373,6 +551,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @DropItem.started -= instance.OnDropItem;
             @DropItem.performed -= instance.OnDropItem;
             @DropItem.canceled -= instance.OnDropItem;
+            @InspectItem.started -= instance.OnInspectItem;
+            @InspectItem.performed -= instance.OnInspectItem;
+            @InspectItem.canceled -= instance.OnInspectItem;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -395,11 +576,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Close;
+    private readonly InputAction m_UI_InspectItemDirection;
+    private readonly InputAction m_UI_StopItemInspect;
     public struct UIActions
     {
         private @InputMap m_Wrapper;
         public UIActions(@InputMap wrapper) { m_Wrapper = wrapper; }
         public InputAction @Close => m_Wrapper.m_UI_Close;
+        public InputAction @InspectItemDirection => m_Wrapper.m_UI_InspectItemDirection;
+        public InputAction @StopItemInspect => m_Wrapper.m_UI_StopItemInspect;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -412,6 +597,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Close.started += instance.OnClose;
             @Close.performed += instance.OnClose;
             @Close.canceled += instance.OnClose;
+            @InspectItemDirection.started += instance.OnInspectItemDirection;
+            @InspectItemDirection.performed += instance.OnInspectItemDirection;
+            @InspectItemDirection.canceled += instance.OnInspectItemDirection;
+            @StopItemInspect.started += instance.OnStopItemInspect;
+            @StopItemInspect.performed += instance.OnStopItemInspect;
+            @StopItemInspect.canceled += instance.OnStopItemInspect;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -419,6 +610,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Close.started -= instance.OnClose;
             @Close.performed -= instance.OnClose;
             @Close.canceled -= instance.OnClose;
+            @InspectItemDirection.started -= instance.OnInspectItemDirection;
+            @InspectItemDirection.performed -= instance.OnInspectItemDirection;
+            @InspectItemDirection.canceled -= instance.OnInspectItemDirection;
+            @StopItemInspect.started -= instance.OnStopItemInspect;
+            @StopItemInspect.performed -= instance.OnStopItemInspect;
+            @StopItemInspect.canceled -= instance.OnStopItemInspect;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -452,9 +649,12 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnMouseDelta(InputAction.CallbackContext context);
         void OnSelectItem(InputAction.CallbackContext context);
         void OnDropItem(InputAction.CallbackContext context);
+        void OnInspectItem(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
         void OnClose(InputAction.CallbackContext context);
+        void OnInspectItemDirection(InputAction.CallbackContext context);
+        void OnStopItemInspect(InputAction.CallbackContext context);
     }
 }
