@@ -12,6 +12,8 @@ namespace ProjectKYS.Inventory
         [SerializeField] private InventoryView _view;
         [SerializeField] private InventoryItemInspect _itemInspect;
 
+        public int SelectedSlot => _selectedSlot;
+
         private IInputService _inputService;
         private PlayerInteract _playerInteract;
         private ItemComponent[] _itemSlots;
@@ -57,7 +59,7 @@ namespace ProjectKYS.Inventory
         {
             if (UseItem(item))
             {
-                Destroy(_itemSlots[_selectedSlot].gameObject);
+                _itemSlots[_selectedSlot].gameObject.SetActive(false);
                 _itemSlots[_selectedSlot] = null;
 
                 _view.UpdateView(_itemSlots, _selectedSlot);
@@ -68,8 +70,11 @@ namespace ProjectKYS.Inventory
             return false;
         }
 
-        private void SetItemToSlot(int slot, ItemComponent item)
+        public void SetItemToSlot(int slot, ItemComponent item)
         {
+            if (_itemSlots[slot] != null)
+                DropItemFromSlot(slot);
+
             _itemSlots[slot] = item;
 
             item.IsInteractable = false;
@@ -79,9 +84,12 @@ namespace ProjectKYS.Inventory
             _view.UpdateView(_itemSlots, _selectedSlot);
             _itemInspect.SetSelectedItem(_itemSlots[_selectedSlot]);
         }
-        private void DropItemFromSlot(int slot)
+        public void DropItemFromSlot(int slot)
         {
             var item = _itemSlots[slot];
+
+            if (item == null)
+                return;
 
             _view.RemoveItem(item);
             item.IsInteractable = true;
@@ -90,6 +98,22 @@ namespace ProjectKYS.Inventory
             _itemSlots[slot] = null;
 
             _view.UpdateView(_itemSlots, _selectedSlot);
+        }
+        public void SelectSlot(int slot)
+        {
+            _selectedSlot = Mathf.Clamp(slot, 0, SLOTS_COUNT - 1);
+
+            _view.UpdateView(_itemSlots, _selectedSlot);
+            _itemInspect.SetSelectedItem(_itemSlots[_selectedSlot]);
+        }
+        public int GetSlotIndexByItem(ItemComponent item)
+        {
+            for (int i = 0; i < _itemSlots.Length; i++)
+            {
+                if (_itemSlots[i] == item)
+                    return i;
+            }
+            return -1;
         }
 
         private bool IsSelectedSlotFree()

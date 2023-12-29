@@ -1,6 +1,8 @@
 ﻿using ProjectKYS.Infrasturcture.SaveData.Variables;
 using System;
 using UnityEngine;
+using AYellowpaper.SerializedCollections;
+using System.Collections.Generic;
 
 namespace ProjectKYS.Infrasturcture.SaveData
 {
@@ -8,10 +10,10 @@ namespace ProjectKYS.Infrasturcture.SaveData
     public class GameSceneSaveData
     {
         public string SceneName;
-        public GamePlayerOrientationSaveData Player;
-        [SerializeReference] public GameSceneObjectStateSaveData[] SceneObjects;
+        public GamePlayerSaveData Player;
+        [SerializeReference] public List<GameSceneObjectSaveData> SceneObjects;
 
-        public GameSceneSaveData(string sceneName, params GameSceneObjectStateSaveData[] sceneObjects)
+        public GameSceneSaveData(string sceneName, List<GameSceneObjectSaveData> sceneObjects)
         {
             SceneName = sceneName;
             Player = null;

@@ -37,6 +37,9 @@ namespace ProjectKYS.Infrasturcture.Services.Save
 
         public void Save(int slotIdx)
         {
+            if (_save == null)
+                Reset(slotIdx, false);
+
             OnSave?.Invoke(_save);
 
             _save.ActiveSceneSaveData.SceneName = SceneService.GetActiveSceneName();

@@ -1,0 +1,151 @@
+{
+    "SaveIndex": 0,
+    "ActiveSceneSaveData": {
+        "SceneName": "SampleScene 1",
+        "Player": {
+            "PlayerPos": {
+                "X": 2.513789653778076,
+                "Y": 0.07999983429908753,
+                "Z": -3.326758861541748
+            },
+            "PlayerRot": {
+                "X": 0.0,
+                "Y": 275.5999755859375,
+                "Z": 0.0
+            },
+            "PlayerCameraRot": {
+                "X": 0.000058501962485024706,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "Empty": false,
+            "SelectedSlot": 3
+        },
+        "SceneObjects": [
+            {
+                "rid": 1000
+            },
+            {
+                "rid": 1001
+            },
+            {
+                "rid": 1002
+            },
+            {
+                "rid": 1003
+            },
+            {
+                "rid": 1004
+            }
+        ]
+    },
+    "references": {
+        "version": 2,
+        "RefIds": [
+            {
+                "rid": 1000,
+                "type": {
+                    "class": "GameSceneObjectSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 3167,
+                    "Enabled": true
+                }
+            },
+            {
+                "rid": 1001,
+                "type": {
+                    "class": "GameItemComponentSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 2508,
+                    "Enabled": false,
+                    "Position": {
+                        "X": 0.7870701551437378,
+                        "Y": 1.7799980640411378,
+                        "Z": -3.1574532985687258
+                    },
+                    "Rotation": {
+                        "X": 0.000058501962485024706,
+                        "Y": 275.5999755859375,
+                        "Z": 0.0
+                    },
+                    "SlotIndex": -1
+                }
+            },
+            {
+                "rid": 1002,
+                "type": {
+                    "class": "GameItemComponentSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 4386,
+                    "Enabled": true,
+                    "Position": {
+                        "X": 4.970000267028809,
+                        "Y": 0.09999999403953552,
+                        "Z": -9.789999961853028
+                    },
+                    "Rotation": {
+                        "X": -0.000004958327281201491,
+                        "Y": 0.00009188232070300728,
+                        "Z": -0.00004203189382678829
+                    },
+                    "SlotIndex": -1
+                }
+            },
+            {
+                "rid": 1003,
+                "type": {
+                    "class": "GameItemComponentSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 1015,
+                    "Enabled": true,
+                    "Position": {
+                        "X": 4.2210001945495609,
+                        "Y": 0.10000000149011612,
+                        "Z": -8.954000473022461
+                    },
+                    "Rotation": {
+                        "X": -6.643999768130016e-7,
+                        "Y": 0.000030712522857356817,
+                        "Z": 0.000011000051017617807
+                    },
+                    "SlotIndex": -1
+                }
+            },
+            {
+                "rid": 1004,
+                "type": {
+                    "class": "GameItemComponentSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 9675,
+                    "Enabled": true,
+                    "Position": {
+                        "X": 4.750000476837158,
+                        "Y": 0.09999999403953552,
+                        "Z": -10.84000015258789
+                    },
+                    "Rotation": {
+                        "X": -0.000006110496997280279,
+                        "Y": 0.00009201066131936386,
+                        "Z": -0.00004035920574096963
+                    },
+                    "SlotIndex": -1
+                }
+            }
+        ]
+    }
+}

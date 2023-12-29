@@ -11,13 +11,12 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
     public class SceneSavablesContainer : MonoBehaviour
     {
         private ISaveService _saveService;
-        private PlayerController _player;
-        private SaveReaderSceneObject[] _saveReader;
+        private SaveReaderSceneObject[] _saveReader;       
 
-        public void Initialize(PlayerController player, ISaveService saveService)
+        public void Initialize(ISaveService saveService)
         {
-            _player = player;
             _saveService = saveService;
+
             _saveService.OnSave += Save;
             _saveService.OnLoad += Load;
         }
@@ -31,16 +30,14 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
         {
             _saveReader = FindObjectsOfType<SaveReaderSceneObject>(true);
 
-            List<GameSceneObjectStateSaveData> savables = new List<GameSceneObjectStateSaveData>();
+            save.ActiveSceneSaveData.SceneObjects.Clear();
             foreach (var reader in _saveReader)
             {
                 if(reader is SavableSceneObject savable)
                 {
-                    savable.Save(save);
-                    savables.Add(savable.ToObjectStateSaveData());
+                    save.ActiveSceneSaveData.SceneObjects.Add(savable.Save(save));
                 }
             }
-            save.ActiveSceneSaveData.SceneObjects = savables.ToArray();
         }
         private void Load(GameProgressSaveData save)
         {
@@ -49,6 +46,9 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
             foreach (var reader in _saveReader)
             {
                 reader.Load(save);
+
+                if (reader is SavableSceneObject savable)
+                    savable.Load(save, save.ActiveSceneSaveData.SceneObjects.Find(x => x.ID == savable.ID));
             }
         }
     }

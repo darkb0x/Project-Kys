@@ -9,6 +9,7 @@ using ProjectKYS.Infrasturcture.Services.Save;
 using ProjectKYS.Infrasturcture.Services.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace ProjectKYS.Infrasturcture.EntryPoint
 {
@@ -52,7 +53,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             _serviceLocator.Set<IInputService>(new InputService());
             _serviceLocator.Set<ISceneService>(new SceneService(this));
             _serviceLocator.Set<ISaveService>(new SaveService(
-                new GameSceneSaveData(_fisrtLocationSceneName)
+                new GameSceneSaveData(_fisrtLocationSceneName, new List<GameSceneObjectSaveData>())
                 ));
             _serviceLocator.Set<ICutsceneService>(new CutsceneService(this));
             _serviceLocator.Set<IHUDService>(new HUDService());
@@ -62,13 +63,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
         private void SaveSlot1()
             => _serviceLocator.Get<ISaveService>().Save(0);
         [Button]
-        private void SaveSlot2()
-            => _serviceLocator.Get<ISaveService>().Save(1);
-        [Button]
-        private void SaveSlot3()
-            => _serviceLocator.Get<ISaveService>().Save(2);
-        [Button]
-        private void SaveSlot4()
-            => _serviceLocator.Get<ISaveService>().Save(3);
+        private void LoadSlot1()
+            => _serviceLocator.Get<ISaveService>().Load(0);
     }
 }

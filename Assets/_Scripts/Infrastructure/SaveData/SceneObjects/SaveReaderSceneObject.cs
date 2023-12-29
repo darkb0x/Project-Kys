@@ -6,6 +6,6 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
 {
     public abstract class SaveReaderSceneObject : MonoBehaviour, ISaveReaderObject
     {
-        public abstract void Load(GameProgressSaveData save);
+        public virtual void Load(GameProgressSaveData save) { }
     }
 }

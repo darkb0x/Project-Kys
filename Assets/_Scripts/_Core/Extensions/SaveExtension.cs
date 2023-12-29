@@ -31,12 +31,5 @@ namespace ProjectKYS
             return new Vector3(saveVector.X, saveVector.Y, saveVector.Z);
         }
         #endregion
-
-        #region Scene Objects
-        public static GameSceneObjectStateSaveData ToObjectStateSaveData(this SavableSceneObject saveObject)
-        {
-            return new GameSceneObjectStateSaveData(saveObject.ID, saveObject.gameObject.activeSelf);
-        }
-        #endregion
     }
 }

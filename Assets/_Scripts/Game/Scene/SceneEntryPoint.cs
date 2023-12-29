@@ -36,7 +36,7 @@ namespace ProjectKYS
         protected virtual void OnAwake()
         {
             _player = _playerSpawnPoint.SpawnPlayer(ServiceLocator.Instance.Get<IInputService>(), ServiceLocator.Instance.Get<IHUDService>()); ;
-            _sceneSavablesContainer.Initialize(_player, ServiceLocator.Instance.Get<ISaveService>());
+            _sceneSavablesContainer.Initialize(ServiceLocator.Instance.Get<ISaveService>());
             _cutsceneController.Initialize(_player, ServiceLocator.Instance.Get<ICutsceneService>());
         }
         protected virtual void OnStart()

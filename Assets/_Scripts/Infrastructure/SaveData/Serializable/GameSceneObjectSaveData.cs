@@ -3,12 +3,12 @@
 namespace ProjectKYS.Infrasturcture.SaveData
 {
     [Serializable]
-    public class GameSceneObjectStateSaveData
+    public class GameSceneObjectSaveData
     {
         public int ID;
         public bool Enabled;
 
-        public GameSceneObjectStateSaveData(int id, bool enabled)
+        public GameSceneObjectSaveData(int id, bool enabled)
         {
             ID = id;
             Enabled = enabled;

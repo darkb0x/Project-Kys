@@ -3,6 +3,6 @@
     public interface ISaveObject : ISaveReaderObject
     {
         public int ID { get; }
-        void Save(GameProgressSaveData save);
+        GameSceneObjectSaveData Save(GameProgressSaveData save);
     }
 }

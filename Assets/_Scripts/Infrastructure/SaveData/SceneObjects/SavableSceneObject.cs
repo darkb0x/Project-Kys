@@ -11,7 +11,8 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
 
         public int ID => _id;
 
-        public abstract void Save(GameProgressSaveData save);
+        public abstract GameSceneObjectSaveData Save(GameProgressSaveData save);
+        public virtual void Load(GameProgressSaveData save, GameSceneObjectSaveData objSave) { }
 
         [Button]
         protected void GenerateID()

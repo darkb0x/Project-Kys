@@ -60,7 +60,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""id"": ""b2c4b653-4de7-4900-9d3b-926bae91679a"",
                     ""expectedControlType"": ""Delta"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Press(pressPoint=0.2)"",
                     ""initialStateCheck"": true
                 },
                 {

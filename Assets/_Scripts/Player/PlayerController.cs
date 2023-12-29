@@ -13,6 +13,8 @@ namespace ProjectKYS.Player
     RequireComponent(typeof(PlayerInteract))]
     public class PlayerController : SavableSceneObject
     {
+        public static PlayerController Instance { get; private set; }
+
         [SerializeField] private Camera _camera;
 
         [Header("Components")]
@@ -33,6 +35,8 @@ namespace ProjectKYS.Player
 
         public void Initialize(Infrasturcture.Services.Input.IInputService inputService, IHUDService hudService, IGameFactory gameFactory)
         {
+            Instance = this;
+
             hudService.AssignHUDContainer(gameFactory.CreateHUD(hudService));
 
             _cursorLocker.Initialize();
@@ -54,13 +58,16 @@ namespace ProjectKYS.Player
         public Vector3 GetRotation()
             => transform.eulerAngles;
 
-        public override void Save(GameProgressSaveData save)
+        public override GameSceneObjectSaveData Save(GameProgressSaveData save)
         {
-            save.ActiveSceneSaveData.Player = new GamePlayerOrientationSaveData(
+            save.ActiveSceneSaveData.Player = new GamePlayerSaveData(
                 transform.position.ToSaveData(),
                 transform.eulerAngles.ToSaveData(),
-                _camera.transform.localEulerAngles.ToSaveData()
+                _camera.transform.localEulerAngles.ToSaveData(),
+                _inventoryController.SelectedSlot
                 );
+
+            return new GameSceneObjectSaveData(ID, gameObject.activeSelf);
         }
 
         public override void Load(GameProgressSaveData save)
@@ -73,6 +80,7 @@ namespace ProjectKYS.Player
             Vector3 playerOffset = new Vector3(0, 0.2f, 0);
             _playerMoveComponent.SetPositionAndRotation(sceneSaveData.Player.PlayerPos.ToUnityVector() + playerOffset, sceneSaveData.Player.PlayerRot.ToUnityVector());
             _camera.transform.localEulerAngles = sceneSaveData.Player.PlayerCameraRot.ToUnityVector();
+            _inventoryController.SelectSlot(sceneSaveData.Player.SelectedSlot);
         }
     }
 }
