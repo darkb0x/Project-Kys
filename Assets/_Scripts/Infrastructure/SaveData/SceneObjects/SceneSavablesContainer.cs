@@ -48,7 +48,12 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
                 reader.Load(save);
 
                 if (reader is SavableSceneObject savable)
-                    savable.Load(save, save.ActiveSceneSaveData.SceneObjects.Find(x => x.ID == savable.ID));
+                {
+                    var objSave = save.ActiveSceneSaveData.SceneObjects.Find(x => x.ID == savable.ID);
+
+                    if(objSave != null)
+                        savable.Load(save, objSave);
+                }
             }
         }
     }

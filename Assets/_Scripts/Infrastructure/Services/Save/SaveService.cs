@@ -42,6 +42,7 @@ namespace ProjectKYS.Infrasturcture.Services.Save
 
             OnSave?.Invoke(_save);
 
+            _save.SaveIndex = slotIdx;
             _save.ActiveSceneSaveData.SceneName = SceneService.GetActiveSceneName();
 
             SaveUtility.SaveDataToJson($"{_path}Slot{slotIdx}/", SAVE_FILE_NAME, _save);

@@ -21,6 +21,9 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
         [SerializeField, Scene] private string _initialSceneName;
         [SerializeField, Scene] private string _fisrtLocationSceneName;
 
+        [Header("Save")]
+        [SerializeField] private bool DebugLoadSlot0;
+
         private ServiceLocator _serviceLocator;
 
         private void Awake()
@@ -45,6 +48,9 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             {
                 SceneManager.LoadScene(startScene);
             }
+
+            if (DebugLoadSlot0)
+                LoadSlot1();
         }
 
         private void RegisterServices()

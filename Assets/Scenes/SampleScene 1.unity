@@ -668,7 +668,6 @@ MonoBehaviour:
   IsInteractable: 1
   _item: {fileID: 11400000, guid: 127023390ad5cdc4493d058f9700a712, type: 2}
   _rigidbody: {fileID: 875647072}
-  _savableComponent: {fileID: 875647078}
 --- !u!65 &875647074
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -768,7 +767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 2508
-  SlotIndex: 0
 --- !u!1 &905130878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,7 +1075,6 @@ MonoBehaviour:
   IsInteractable: 1
   _item: {fileID: 11400000, guid: 6fb6ca3f1daff1e4bb72788c6c0e54f2, type: 2}
   _rigidbody: {fileID: 1252636367}
-  _savableComponent: {fileID: 1252636368}
 --- !u!65 &1252636363
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1204,7 +1201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 4386
-  SlotIndex: 0
 --- !u!1 &1319870647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2066,6 @@ MonoBehaviour:
   IsInteractable: 1
   _item: {fileID: 11400000, guid: 6fb6ca3f1daff1e4bb72788c6c0e54f2, type: 2}
   _rigidbody: {fileID: 1710370335}
-  _savableComponent: {fileID: 1710370336}
 --- !u!54 &1710370335
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2111,7 +2106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 1015
-  SlotIndex: 0
 --- !u!1 &1836101788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,7 +2143,6 @@ MonoBehaviour:
   IsInteractable: 1
   _item: {fileID: 11400000, guid: 6fb6ca3f1daff1e4bb72788c6c0e54f2, type: 2}
   _rigidbody: {fileID: 1836101794}
-  _savableComponent: {fileID: 1836101795}
 --- !u!65 &1836101790
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2276,7 +2269,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _id: 9675
-  SlotIndex: 0
 --- !u!1 &1880504804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,6 +2387,75 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1988483965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988483968}
+  - component: {fileID: 1988483967}
+  - component: {fileID: 1988483966}
+  m_Layer: 0
+  m_Name: AutoSave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1988483966
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988483965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 2, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1988483967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988483965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bf8ff33df0de9e46bfd3be824d17ee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _id: 1408
+  _size: {x: 3, y: 2, z: 4}
+  _collider: {fileID: 1988483966}
+--- !u!4 &1988483968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988483965}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.4, y: 1.06, z: -1.91}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2755499599307178886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2457,6 +2518,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameEntryPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431638234810089491, guid: bdb22351b49f80441ad7cf4d0ba73b2a,
+        type: 3}
+      propertyPath: DebugLoadSlot0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6431638234810089491, guid: bdb22351b49f80441ad7cf4d0ba73b2a,
+        type: 3}
+      propertyPath: _fisrtLocationSceneName
+      value: SampleScene 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2551,3 +2622,4 @@ SceneRoots:
   - {fileID: 212368362}
   - {fileID: 243518925}
   - {fileID: 1454103094}
+  - {fileID: 1988483968}
