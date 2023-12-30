@@ -4,22 +4,22 @@
         "SceneName": "SampleScene 1",
         "Player": {
             "PlayerPos": {
-                "X": 4.180877208709717,
-                "Y": 0.47222596406936648,
-                "Z": -4.086890697479248
+                "X": 0.5492557883262634,
+                "Y": 0.07999998331069946,
+                "Z": -8.62177562713623
             },
             "PlayerRot": {
                 "X": 0.0,
-                "Y": 4.0000786781311039,
+                "Y": 322.60003662109377,
                 "Z": 0.0
             },
             "PlayerCameraRot": {
-                "X": 14.600040435791016,
+                "X": 8.400020599365235,
                 "Y": 0.0,
                 "Z": 0.0
             },
             "Empty": false,
-            "SelectedSlot": 3
+            "SelectedSlot": 0
         },
         "SceneObjects": [
             {
@@ -39,6 +39,12 @@
             },
             {
                 "rid": 1005
+            },
+            {
+                "rid": 1006
+            },
+            {
+                "rid": 1007
             }
         ]
     },
@@ -60,24 +66,18 @@
             {
                 "rid": 1001,
                 "type": {
-                    "class": "GameItemComponentSaveData",
+                    "class": "GameDynamicalSaveData",
                     "ns": "ProjectKYS.Infrasturcture.SaveData",
                     "asm": "Assembly-CSharp"
                 },
                 "data": {
-                    "ID": 2508,
+                    "ID": 5433,
                     "Enabled": true,
-                    "Position": {
-                        "X": 4.062000274658203,
-                        "Y": 0.09999999403953552,
-                        "Z": -9.906999588012696
-                    },
-                    "Rotation": {
-                        "X": 8.568449061385763e-7,
-                        "Y": 0.000005523392701434204,
-                        "Z": -0.000024790731913526542
-                    },
-                    "SlotIndex": -1
+                    "DataList": [
+                        {
+                            "rid": 1008
+                        }
+                    ]
                 }
             },
             {
@@ -88,19 +88,19 @@
                     "asm": "Assembly-CSharp"
                 },
                 "data": {
-                    "ID": 4386,
-                    "Enabled": true,
+                    "ID": 2508,
+                    "Enabled": false,
                     "Position": {
-                        "X": 4.297998905181885,
-                        "Y": 1.73488450050354,
-                        "Z": -2.412005662918091
+                        "X": -0.4932355284690857,
+                        "Y": 1.5265452861785889,
+                        "Z": -7.258251667022705
                     },
                     "Rotation": {
-                        "X": 14.600041389465332,
-                        "Y": 4.000078201293945,
-                        "Z": -5.514141676599138e-8
+                        "X": 8.400020599365235,
+                        "Y": 322.60003662109377,
+                        "Z": 0.0
                     },
-                    "SlotIndex": 3
+                    "SlotIndex": -1
                 }
             },
             {
@@ -111,23 +111,66 @@
                     "asm": "Assembly-CSharp"
                 },
                 "data": {
-                    "ID": 1015,
-                    "Enabled": false,
+                    "ID": 4386,
+                    "Enabled": true,
                     "Position": {
-                        "X": 4.297998905181885,
-                        "Y": 1.73488450050354,
-                        "Z": -2.412005662918091
+                        "X": 4.970000267028809,
+                        "Y": 0.09999999403953552,
+                        "Z": -9.789999961853028
                     },
                     "Rotation": {
-                        "X": 14.600041389465332,
-                        "Y": 4.000078201293945,
-                        "Z": -5.514141676599138e-8
+                        "X": -8.658388992444088e-7,
+                        "Y": 0.00006559667963301763,
+                        "Z": -0.00001919241731229704
                     },
-                    "SlotIndex": 0
+                    "SlotIndex": -1
                 }
             },
             {
                 "rid": 1004,
+                "type": {
+                    "class": "GameDynamicalSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 2832,
+                    "Enabled": true,
+                    "DataList": [
+                        {
+                            "rid": 1009
+                        },
+                        {
+                            "rid": 1010
+                        }
+                    ]
+                }
+            },
+            {
+                "rid": 1005,
+                "type": {
+                    "class": "GameItemComponentSaveData",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "ID": 1015,
+                    "Enabled": true,
+                    "Position": {
+                        "X": 4.2210001945495609,
+                        "Y": 0.10000000149011612,
+                        "Z": -8.954000473022461
+                    },
+                    "Rotation": {
+                        "X": 0.0000019567453364288669,
+                        "Y": 0.00007816634024493396,
+                        "Z": 0.00001785993117664475
+                    },
+                    "SlotIndex": -1
+                }
+            },
+            {
+                "rid": 1006,
                 "type": {
                     "class": "GameItemComponentSaveData",
                     "ns": "ProjectKYS.Infrasturcture.SaveData",
@@ -138,19 +181,19 @@
                     "Enabled": true,
                     "Position": {
                         "X": 4.750000476837158,
-                        "Y": 0.09999998658895493,
+                        "Y": 0.09999999403953552,
                         "Z": -10.84000015258789
                     },
                     "Rotation": {
-                        "X": -0.0000022517981506098296,
-                        "Y": 0.00009044208854902536,
-                        "Z": -0.00003330155959702097
+                        "X": -0.000003433451638557017,
+                        "Y": 0.00006574279541382566,
+                        "Z": -0.00001886821883090306
                     },
                     "SlotIndex": -1
                 }
             },
             {
-                "rid": 1005,
+                "rid": 1007,
                 "type": {
                     "class": "GameSceneObjectSaveData",
                     "ns": "ProjectKYS.Infrasturcture.SaveData",
@@ -158,7 +201,43 @@
                 },
                 "data": {
                     "ID": 1408,
-                    "Enabled": true
+                    "Enabled": false
+                }
+            },
+            {
+                "rid": 1008,
+                "type": {
+                    "class": "GameDynamicalSaveData/DataBool",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "Key": "Used",
+                    "Value": true
+                }
+            },
+            {
+                "rid": 1009,
+                "type": {
+                    "class": "GameDynamicalSaveData/DataBool",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "Key": "Used",
+                    "Value": true
+                }
+            },
+            {
+                "rid": 1010,
+                "type": {
+                    "class": "GameDynamicalSaveData/DataBool",
+                    "ns": "ProjectKYS.Infrasturcture.SaveData",
+                    "asm": "Assembly-CSharp"
+                },
+                "data": {
+                    "Key": "IsOpened",
+                    "Value": false
                 }
             }
         ]

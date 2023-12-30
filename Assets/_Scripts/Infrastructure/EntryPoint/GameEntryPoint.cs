@@ -10,6 +10,7 @@ using ProjectKYS.Infrasturcture.Services.Scene;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using ProjectKYS.Configs;
 
 namespace ProjectKYS.Infrasturcture.EntryPoint
 {
@@ -18,11 +19,10 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
         public static GameEntryPoint Instance { get; private set; }
 
         [Header("Scenes")]
-        [SerializeField, Scene] private string _initialSceneName;
-        [SerializeField, Scene] private string _fisrtLocationSceneName;
+        [SerializeField] private SceneConfigSO _sceneConfig;
 
         [Header("Save")]
-        [SerializeField] private bool DebugLoadSlot0;
+        [SerializeField] private bool DebugLoadSlot1;
 
         private ServiceLocator _serviceLocator;
 
@@ -37,19 +37,19 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             string startScene = SceneManager.GetActiveScene().name;
 
             Instance = this;
-            SceneManager.LoadScene(_initialSceneName);
+            SceneManager.LoadScene(_sceneConfig.InitialSceneName);
 
             _serviceLocator = new ServiceLocator();
             RegisterServices();
 
             DontDestroyOnLoad(this);
 
-            if(startScene != _initialSceneName)
+            if(startScene != _sceneConfig.InitialSceneName)
             {
                 SceneManager.LoadScene(startScene);
             }
 
-            if (DebugLoadSlot0)
+            if (DebugLoadSlot1)
                 LoadSlot1();
         }
 
@@ -59,7 +59,7 @@ namespace ProjectKYS.Infrasturcture.EntryPoint
             _serviceLocator.Set<IInputService>(new InputService());
             _serviceLocator.Set<ISceneService>(new SceneService(this));
             _serviceLocator.Set<ISaveService>(new SaveService(
-                new GameSceneSaveData(_fisrtLocationSceneName, new List<GameSceneObjectSaveData>())
+                new GameSceneSaveData(_sceneConfig.FirstLocationSceneName, new List<GameSceneObjectSaveData>())
                 ));
             _serviceLocator.Set<ICutsceneService>(new CutsceneService(this));
             _serviceLocator.Set<IHUDService>(new HUDService());

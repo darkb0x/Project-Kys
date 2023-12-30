@@ -9,24 +9,18 @@ namespace ProjectKYS.Infrasturcture.SaveData.SceneObjects
 {
     public class AutoSaveTrigger : SavableSceneObject
     {
-        [SerializeField, OnValueChanged("OnSizeChanged"), HideIf("IsColliderNull")] private Vector3 _size = new Vector3(1, 1, 1);
         [SerializeField] private BoxCollider _collider;
 
         private ISaveService _saveService;
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = new Color(0, 0, 1, 0.3f);
-            Gizmos.DrawCube(transform.position, _size);
-        }
-        private void OnSizeChanged()
-        {
-            if (IsColliderNull())
+            if (_collider == null)
                 return;
 
-            _collider.size = _size;
+            Gizmos.color = new Color(0, 0, 1, 0.3f);
+            Gizmos.DrawCube(transform.position + _collider.center, _collider.size);
         }
-        private bool IsColliderNull() => _collider == null;
 
         private void Awake()
         {

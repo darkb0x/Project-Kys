@@ -1,12 +1,16 @@
-﻿using ProjectKYS.Inventory;
+﻿using ProjectKYS.Infrasturcture.SaveData;
+using ProjectKYS.Inventory;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace ProjectKYS
 {
-    public class InteractableWithRequirableItem : Interactable
+    public class RequireItemInteractable : Interactable
     {
+        protected const string USED_SAVEDATA_KEY = "Used";
+
         public enum ItemUseType { Take, Use }
 
         [SerializeField] private string _interactableName;
@@ -18,6 +22,7 @@ namespace ProjectKYS
         [SerializeField] private UnityEvent _onActivated;
 
         public override string InteractableName => GetShowedText();
+        public bool Used => _used;
 
         private bool _used;
 
@@ -51,6 +56,27 @@ namespace ProjectKYS
                 UseItem(inventory);
         }
 
+        public void SetUsedState(bool value)
+        {
+            _used = value;
+            if (_used)
+                Interact();
+        }
+
+        public virtual GameSceneObjectSaveData Save(GameProgressSaveData save)
+        {
+            return new GameDynamicalSaveData(
+                new GameDynamicalSaveData.DataBool(USED_SAVEDATA_KEY, _used)
+                );
+        }
+        public virtual void Load(GameProgressSaveData save, GameDynamicalSaveData objDynamicSave)
+        {
+            if(objDynamicSave.GetData(USED_SAVEDATA_KEY, out GameDynamicalSaveData.DataBool data))
+            {
+                SetUsedState(data.Value);
+            }
+        }
+
         private void TakeItem(InventoryController inventory)
         {
             if(inventory.TakeItem(_requiredItem))
@@ -73,5 +99,6 @@ namespace ProjectKYS
                 return $"{_interactableName}\nRequired: {_requiredItem.Name}";
             }
         }
+
     }
 }

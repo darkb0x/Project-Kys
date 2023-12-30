@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b301b05cd60ec474796b55f395722011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialSceneName: Init
-  _fisrtLocationSceneName: Lever_01
+  _sceneConfig: {fileID: 11400000, guid: 453e02f7f5c0b584e84c9f17bce9f9aa, type: 2}
+  DebugLoadSlot0: 0

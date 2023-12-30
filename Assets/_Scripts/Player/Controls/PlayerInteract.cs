@@ -78,7 +78,7 @@ namespace ProjectKYS.Player.Controls
             if (_currentInteractable == null)
                 return;
 
-            if (_currentInteractable is InteractableWithRequirableItem interactableWithRequirableItem)
+            if (_currentInteractable is RequireItemInteractable interactableWithRequirableItem)
                 interactableWithRequirableItem.Interact(_inventoryController);
             else
                 _currentInteractable.Interact();
